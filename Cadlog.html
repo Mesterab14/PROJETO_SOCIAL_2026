@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;600&display=swap" rel="stylesheet">
+    <title>QMath</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html, body {
+            height: 100vh;
+            width: 100vw;
+            background-color: #121440;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background-color: #121440;
+            overflow: hidden;
+        }
+
+        /* --- CONTAINER DOS FORMULÁRIOS --- */
+        .form-container {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            transition: all 0.6s ease-in-out;
+        }
+
+        /* Login fixo na direita no início */
+        .sign-in-container {
+            left: 50%;
+            z-index: 2;
+        }
+
+        /* Cadastro fixo na esquerda no início */
+        .sign-up-container {
+            left: 0;
+            z-index: 1;
+            opacity: 0; /* Começa invisível para não aparecer atrás do overlay */
+        }
+
+        /* --- QUANDO CLICAR EM CADASTRE-SE (.right-panel-active) --- */
+        
+        /* O Login some e perde o foco */
+        .container.right-panel-active .sign-in-container {
+            opacity: 0;
+            z-index: 1;
+        }
+
+        /* O Cadastro ganha opacidade e assume o controle da tela */
+        .container.right-panel-active .sign-up-container {
+            opacity: 1;
+            z-index: 5;
+        }
+
+        /* --- O PAINEL DA IMAGEM (OVERLAY) --- */
+        .overlay-container {
+            position: absolute;
+            top: 0;
+            left: 0; /* Começa cobrindo o Cadastro na esquerda */
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: transform 0.6s ease-in-out;
+            z-index: 10; /* Sempre no topo */
+        }
+
+        /* Move o bloco do overlay inteiro para a direita */
+        .container.right-panel-active .overlay-container {
+            transform: translateX(100%);
+        }
+
+        /* Efeito de revelar o fundo se movendo ao contrário */
+        .overlay {
+            background: url('pixelart.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+            position: relative;
+            left: 0;
+            height: 100%;
+            width: 100%; 
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .overlay-panel {
+            position: absolute;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-direction: column;
+            padding: 60px;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(14, 16, 59, 0.4);
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        /* Controla qual texto aparece dentro da imagem */
+        .overlay-left {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .overlay-right {
+            opacity: 1;
+        }
+
+        .container.right-panel-active .overlay-left {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .container.right-panel-active .overlay-right {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* --- ESTILOS DOS INPUTS E DESIGN --- */
+        .login-box {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            font-weight: 500;
+            color: #797da1;
+            letter-spacing: 1.5px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .login-box h2 {
+            color: white;
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 6px;
+        }
+
+        .description {
+            color: #797da1;
+            font-size: 14px;
+            margin-bottom: 35px;
+        }
+
+        .input-group {
+            margin-bottom: 20px; 
+        }
+
+        .input-group label {
+            display: block;
+            color: #797da1;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper .icon {
+            position: absolute;
+            left: 16px;
+            opacity: 0.4;
+            font-size: 16px;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 14px 14px 14px 42px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            background: #1b1e4b;
+            color: white;
+            font-size: 14px;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .input-wrapper input:focus {
+            outline: none;
+            background: #202456;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .input-wrapper input::placeholder {
+            color: #4b4f7a;
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 8px;
+            background: #8ad4ff;
+            color: #0e103b;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 25px;
+            transition: opacity 0.2s;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .signup-text {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #797da1;
+        }
+
+        .signup-text a {
+            color: #8ad4ff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .signup-text a:hover {
+            text-decoration: underline;
+        }
+
+        .logo-top {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+
+        .main-content-left {
+            max-width: 480px;
+        }
+
+        .overlay h1 {
+            font-size: 64px;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .info-box {
+            width: 100%;
+            padding: 25px;
+            border-radius: 12px;
+            background: rgba(18, 22, 74, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 15px;
+            line-height: 1.5;
+            font-weight: 300;
+        }
+
+        .info-box-cadastro {
+            width: 100%;
+            padding: 25px;
+            border-radius: 12px;
+            background: rgba(18, 22, 74, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 15px;
+            line-height: 1.5;
+            font-weight: 300;
+            color: white;
+        }
+
+        .footer-left {
+            font-size: 11px;
+            opacity: 0.4;
+            letter-spacing: 1px;
+        }
+        .jogar {
+            color: #b1d3e7;
+        }
+        .aventura {
+            color: #ddb5df;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        
+        <div class="form-container sign-up-container">
+            <div class="login-box">
+                <span class="subtitle">CADASTRO</span>
+                <h2>Criar conta</h2>
+                <p class="description">Preencha os dados para começar.</p>
+                <form>
+                    <div class="input-group">
+                        <label for="matricula-cad">MATRÍCULA</label>
+                        <div class="input-wrapper">
+                            <span class="icon">🪪</span> 
+                            <input type="text" id="matricula-cad" placeholder="Ex: 2025001">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="nome">NOME</label>
+                        <div class="input-wrapper">
+                            <span class="icon">👤</span> 
+                            <input type="text" id="nome" placeholder="Seu nome completo">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="senha-cad">SENHA</label>
+                        <div class="input-wrapper">
+                            <span class="icon">🔒</span>
+                            <input type="password" id="senha-cad" placeholder="Mínimo 6 caracteres">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="confirmar-senha">CONFIRMAR SENHA</label>
+                        <div class="input-wrapper">
+                            <span class="icon">🔒</span>
+                            <input type="password" id="confirmar-senha" placeholder="Repita sua senha">
+                        </div>
+                    </div>
+                    <button type="submit">Cadastrar &rarr;</button>
+                </form>
+                <p class="signup-text">
+                    Já tem uma conta? <a href="#" id="to-login">Entrar</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="form-container sign-in-container">
+            <div class="login-box">
+                <span class="subtitle">ENTRAR</span>
+                <h2>Acessar conta</h2>
+                <p class="description">Use sua matrícula para continuar.</p>
+                <form>
+                    <div class="input-group">
+                        <label for="matricula">MATRÍCULA</label>
+                        <div class="input-wrapper">
+                            <span class="icon">🪪</span> 
+                            <input type="text" id="matricula" placeholder="Ex: 2025001">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="senha">SENHA</label>
+                        <div class="input-wrapper">
+                            <span class="icon">🔒</span>
+                            <input type="password" id="senha" placeholder="••••••••">
+                        </div>
+                    </div>
+                    <button type="submit">Entrar &rarr;</button>
+                </form>
+                <p class="signup-text">
+                    Não tem uma conta? <a href="#" id="to-signup">Cadastre-se</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="overlay-container">
+            <div class="overlay">
+                
+                <div class="overlay-panel overlay-left">
+                    <div class="logo-top">● QMATH</div>
+                    <div class="main-content-left">
+                        <h1>Entre na<br><span class="aventura">aventura.</span></h1>
+                        <div class="info-box-cadastro">
+                            Crie sua conta e comece a treinar lógica, cálculo e raciocínio com jogos divertidos.
+                        </div>
+                    </div>
+                    <div class="footer-left">© 2026 . QMATH</div>
+                </div>
+                
+                <div class="overlay-panel overlay-right">
+                    <div class="logo-top">● QMATH</div>
+                    <div class="main-content-left">
+                        <h1>Pronto para<br><span class="jogar">jogar?</span></h1>
+                        <div class="info-box">
+                            Resolva desafios, suba de nível e domine a matemática brincando. Acesse com sua matrícula.
+                        </div>
+                    </div>
+                    <div class="footer-left">© 2026 . QMATH</div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const container = document.getElementById('container');
+        const toSignup = document.getElementById('to-signup');
+        const toLogin = document.getElementById('to-login');
+
+        toSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            container.classList.add('right-panel-active');
+        });
+
+        toLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            container.classList.remove('right-panel-active');
+        });
+    </script>
+</body>
+</html>

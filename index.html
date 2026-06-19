@@ -3,13 +3,67 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="style.css" />
   <link rel="shortcut icon" type="image/x-icon" href="img/pone.png">
   <title>Página Inicial | </title>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
 
 </head>
 <body>
+
+<style>
+
+  *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body{
+      font-family: 'Baloo 2', cursive;
+      background-color: rgb(255, 255, 255);
+    }
+
+    .navbar{
+      width: 100%;
+      padding: 10px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .navbar a{
+      text-decoration: none;
+      color: rgb(43, 2, 110);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    .navbar a:hover{
+      opacity: 0.7;
+      font-size: 20px;
+      color: rgb(24, 0, 63);
+    }
+
+    /* LOGO */
+    .logo{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .logo img {
+      width: 100px;
+      height: auto;
+    }
+
+</style>
 
   <nav class="navbar">
     <a href="#ranking">Ranking</a>
