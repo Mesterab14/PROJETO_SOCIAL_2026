@@ -313,33 +313,33 @@
                 <span class="subtitle">CADASTRO</span>
                 <h2>Criar conta</h2>
                 <p class="description">Preencha os dados para começar.</p>
-                <form>
+                <form action="php/cadastrar.php" method="POST">
                     <div class="input-group">
                         <label for="matricula-cad">MATRÍCULA</label>
                         <div class="input-wrapper">
                             <span class="icon">🪪</span> 
-                            <input type="text" id="matricula-cad" placeholder="Ex: 2025001">
+                            <input type="text" name="matricula" id="matricula-cad" placeholder="Ex: 2025001">
                         </div>
                     </div>
                     <div class="input-group">
                         <label for="nome">NOME</label>
                         <div class="input-wrapper">
                             <span class="icon">👤</span> 
-                            <input type="text" id="nome" placeholder="Seu nome completo">
+                            <input type="text" name="nome" id="nome" placeholder="Seu nome completo">
                         </div>
                     </div>
                     <div class="input-group">
                         <label for="senha-cad">SENHA</label>
                         <div class="input-wrapper">
                             <span class="icon">🔒</span>
-                            <input type="password" id="senha-cad" placeholder="Mínimo 6 caracteres">
+                            <input type="password" name="senha" id="senha-cad" placeholder="Mínimo 6 caracteres">
                         </div>
                     </div>
                     <div class="input-group">
                         <label for="confirmar-senha">CONFIRMAR SENHA</label>
                         <div class="input-wrapper">
                             <span class="icon">🔒</span>
-                            <input type="password" id="confirmar-senha" placeholder="Repita sua senha">
+                            <input type="password" name="confirmar_senha" id="confirmar-senha" placeholder="Repita sua senha">
                         </div>
                     </div>
                     <button type="submit">Cadastrar &rarr;</button>
@@ -355,19 +355,19 @@
                 <span class="subtitle">ENTRAR</span>
                 <h2>Acessar conta</h2>
                 <p class="description">Use sua matrícula para continuar.</p>
-                <form>
+                <form action="php/login.php" method="POST">
                     <div class="input-group">
                         <label for="matricula">MATRÍCULA</label>
                         <div class="input-wrapper">
                             <span class="icon">🪪</span> 
-                            <input type="text" id="matricula" placeholder="Ex: 2025001">
+                            <input type="text" name="matricula" id="matricula" placeholder="Ex: 2025001">
                         </div>
                     </div>
                     <div class="input-group">
                         <label for="senha">SENHA</label>
                         <div class="input-wrapper">
                             <span class="icon">🔒</span>
-                            <input type="password" id="senha" placeholder="••••••••">
+                            <input type="password" name="senha" id="senha" placeholder="••••••••">
                         </div>
                     </div>
                     <button type="submit">Entrar &rarr;</button>
