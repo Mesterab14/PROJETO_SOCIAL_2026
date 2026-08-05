@@ -1,454 +1,1159 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="shortcut icon" type="image/x-icon" href="qmath.png">
-  <title>QMATH | Página Inicial</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="qmath.png" />
+    <title>QMATH | Página Inicial</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Inter:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Inter:wght@400;500;600;700;800;900&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
 
-  <style>
-    /* ----------------------------------
+    <style>
+      /* ----------------------------------
        RESET E ESTILOS GERAIS
     ---------------------------------- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    body {
-      background-color: #0b0719; /* Fundo roxo escuro do rodapé */
-      color: #a099c4;
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
-    }
+      body {
+        background-color: #0b0719; /* Fundo roxo escuro principal */
+        color: #a099c4;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        overflow-x: hidden;
+      }
 
-    /* ----------------------------------
+      /* ----------------------------------
        1. NAV BAR (MENU SUPERIOR)
     ---------------------------------- */
-    .navbar {
-      width: 100%;
-      padding: 15px 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 40px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      background-color: rgba(11, 7, 25, 0.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid #1c1538;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-      font-family: 'Baloo 2', cursive;
-    }
+      .navbar {
+        width: 100%;
+        padding: 15px 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background-color: rgba(11, 7, 25, 0.92);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid #1c1538;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        font-family: "Baloo 2", cursive;
+      }
 
-    .navbar a {
-      text-decoration: none;
-      color: #a099c4;
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      transition: all 0.3s ease;
-    }
+      .navbar a {
+        text-decoration: none;
+        color: #a099c4;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+      }
 
-    .navbar a:hover {
-      color: #79ded7; /* Ciano pixel */
-      text-shadow: 0 0 8px rgba(121, 222, 215, 0.4);
-    }
+      .navbar a:hover {
+        color: #79ded7; /* Ciano pixel */
+        text-shadow: 0 0 8px rgba(121, 222, 215, 0.4);
+      }
 
-    .logo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-    }
+      /* Animação de clique: efeito rápido ao pressionar links do cabeçalho */
+      .navbar a.click-animate {
+        transform: translateY(-3px) scale(0.98);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+        color: #79ded7;
+      }
 
-    .logo img {
-      width: 80px;
-      height: auto;
-    }
+      .logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+      }
 
-    /* ----------------------------------
+      .logo img {
+        width: 80px;
+        height: auto;
+      }
+
+      /* ----------------------------------
        2. ÁREA DO GIF EM TELA CHEIA (HERO)
     ---------------------------------- */
-    .hero-gif-container {
-      width: 100%;
-      height: 100vh; /* Ocupa exatamente 100% da altura da tela */
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      background-color: #0b0719;
-    }
+      .hero-gif-container {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background-color: #0b0719;
+      }
 
-    .hero-gif-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* Garante que o GIF preencha toda a tela sem distorcer */
-      display: block;
-    }
+      .hero-gif-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
 
-    /* ----------------------------------
+      /* ----------------------------------
        3. SEÇÃO PRINCIPAL - RANKING
     ---------------------------------- */
-    .ranking-section {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 80px 20px;
-    }
-
-    .ranking-box {
-      background-color: #140f2b;
-      border: 1px solid #1c1538;
-      border-radius: 24px;
-      padding: 30px;
-      width: 980px;
-      height: 480px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(121, 222, 215, 0.05);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .ranking-header {
-      text-align: center;
-    }
-
-    .ranking-title {
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: #e685ca; /* Rosa pixel */
-      text-transform: uppercase;
-    }
-
-    .ranking-subtitle {
-      font-size: 0.85rem;
-      color: #8c83b3;
-      margin-top: 4px;
-    }
-
-    .cards-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 14px;
-      width: 100%;
-      height: 320px;
-    }
-
-    .player-card {
-      position: relative;
-      width: 150px;
-      background: #1c1538;
-      border: 1px solid rgba(160, 153, 196, 0.15);
-      border-radius: 16px;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-      flex-shrink: 0;
-    }
-
-    .photo-container {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      border-radius: 12px;
-      overflow: hidden;
-      margin-bottom: 12px;
-    }
-
-    .card-bg {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-
-    .rank-badge {
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      background: rgba(11, 7, 25, 0.85);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(121, 222, 215, 0.4);
-      border-radius: 14px;
-      padding: 2px 8px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: #79ded7;
-      z-index: 2;
-    }
-
-    .rank-badge.top-1 {
-      border-color: #e685ca;
-      color: #e685ca;
-      background: rgba(230, 133, 202, 0.2);
-    }
-
-    .player-info {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .player-name {
-      font-weight: 700;
-      font-size: 0.85rem;
-      color: #ffffff;
-      margin-bottom: 4px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 100%;
-    }
-
-    .player-score {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #79ded7;
-      background: rgba(121, 222, 215, 0.1);
-      padding: 3px 10px;
-      border-radius: 10px;
-      width: 100%;
-    }
-
-    .player-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(121, 222, 215, 0.5);
-    }
-
-    .player-card.active {
-      width: 175px;
-      border: 2px solid #79ded7;
-      box-shadow: 0 0 25px rgba(121, 222, 215, 0.25), 0 12px 30px rgba(0, 0, 0, 0.8);
-      z-index: 5;
-      padding: 14px;
-    }
-
-    .player-card.active .card-bg {
-      transform: scale(1.05);
-    }
-
-    .player-card.active .player-name {
-      font-size: 0.95rem;
-    }
-
-    .player-card.active .player-score {
-      font-size: 0.85rem;
-      background: rgba(121, 222, 215, 0.2);
-    }
-
-    /* ----------------------------------
-       4. RODAPÉ (FOOTER ARCADE)
-    ---------------------------------- */
-    .arcade-footer {
-      background-color: #0b0719;
-      color: #a099c4;
-      font-family: 'Press Start 2P', cursive;
-      padding: 40px 20px 20px;
-      box-sizing: border-box;
-      border-top: 1px solid #1c1538;
-    }
-
-    .footer-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 30px;
-    }
-
-    .footer-brand .logo-text {
-      color: #79ded7;
-      font-size: 24px;
-      margin: 0 0 15px 0;
-      letter-spacing: 2px;
-    }
-
-    .footer-brand .tagline {
-      font-size: 10px;
-      color: #8c83b3;
-      line-height: 1.6;
-    }
-
-    .footer-column h3 {
-      color: #e685ca;
-      font-size: 12px;
-      margin-bottom: 15px;
-    }
-
-    .footer-column ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-column li {
-      margin-bottom: 10px;
-    }
-
-    .footer-column a {
-      color: #8c83b3;
-      text-decoration: none;
-      font-size: 10px;
-      transition: color 0.2s ease;
-    }
-
-    .footer-column a:hover {
-      color: #ffffff;
-    }
-
-    .footer-bottom {
-      max-width: 1100px;
-      margin: 30px auto 0;
-      padding-top: 20px;
-      border-top: 1px solid #1c1538;
-      text-align: center;
-    }
-
-    .footer-bottom p {
-      font-size: 9px;
-      color: #6b6294;
-      margin: 0;
-    }
-
-    .footer-bottom .heart {
-      color: #e685ca;
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <nav class="navbar">
-      <a href="#ranking">Ranking</a>
-      <a href="#sobre">Sobre</a>
-
-      <div class="logo">
-        <img src="qmath.png" alt="Logo do Projeto Social" />
-      </div>
-
-      <a href="#apoie">Apoie</a>
-      <a href="#colaboradores">Colaboradores</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero-gif-container">
-      <img src="SEU_GIF_AQUI.gif" alt="Apresentação QMATH" />
-    </section>
-
-    <section id="ranking" class="ranking-section">
-      <div class="ranking-box">
-        <div class="ranking-header">
-          <h2 class="ranking-title">Top Aventureiros</h2>
-          <p class="ranking-subtitle">Jogadores em destaque nesta semana</p>
-        </div>
-        
-        <div class="cards-container" id="cardsContainer"></div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="arcade-footer">
-    <div class="footer-container">
-      
-      <div class="footer-brand">
-        <h2 class="logo-text">Qmath</h2>
-        <p class="tagline">Exercícios de Matemática</p>
-      </div>
-
-      <div class="footer-column">
-        <h3>LINKS</h3>
-        <ul>
-          <li><a href="#">Jogos</a></li>
-          <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#">Contato</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-column">
-        <h3>CONECTE-SE</h3>
-        <ul>
-          <li><a href="https://www.instagram.com/terceirao._ds?igsh=OTVmN3J1ejhnNHd2" target="_blank" rel="noopener">Instagram</a></li>
-        </ul>
-      </div>
-
-    </div>
-
-    <div class="footer-bottom">
-      <p>© 2026 Qmath • Feito com <span class="heart">♥</span></p>
-    </div>
-  </footer>
-
-  <script>
-    const jogadores = [
-      {
-        posicao: "5º",
-        nome: "Asuka Renjou",
-        pontos: "11.200 pts",
-        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        posicao: "2º",
-        nome: "Takeru Hoshino",
-        pontos: "14.800 pts",
-        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        posicao: "1º",
-        nome: "Lyara Veylith",
-        pontos: "15.420 pts",
-        avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80",
-        destaque: true
-      },
-      {
-        posicao: "3º",
-        nome: "Shiro Kazama",
-        pontos: "13.950 pts",
-        avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        posicao: "4º",
-        nome: "Kaede Kisaragi",
-        pontos: "12.100 pts",
-        avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80"
+      .ranking-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 80px 20px;
       }
-    ];
 
-    const container = document.getElementById('cardsContainer');
+      .ranking-box {
+        background-color: #140f2b;
+        border: 1px solid #1c1538;
+        border-radius: 24px;
+        padding: 30px;
+        width: 980px;
+        height: 480px;
+        box-shadow:
+          0 20px 50px rgba(0, 0, 0, 0.8),
+          0 0 30px rgba(121, 222, 215, 0.05);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+      }
 
-    function renderizarCards() {
-      container.innerHTML = '';
+      .ranking-header {
+        text-align: center;
+      }
 
-      jogadores.forEach((jogador) => {
-        const card = document.createElement('div');
-        card.className = `player-card ${jogador.destaque ? 'active' : ''}`;
-        
-        const isTop1 = jogador.posicao === "1º";
+      .ranking-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: #e685ca; /* Rosa pixel */
+        text-transform: uppercase;
+      }
 
-        card.innerHTML = `
+      .ranking-subtitle {
+        font-size: 0.85rem;
+        color: #8c83b3;
+        margin-top: 4px;
+      }
+
+      .cards-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        width: 100%;
+        height: 320px;
+      }
+
+      .player-card {
+        position: relative;
+        width: 150px;
+        background: #1c1538;
+        border: 1px solid rgba(160, 153, 196, 0.15);
+        border-radius: 16px;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        flex-shrink: 0;
+      }
+
+      .photo-container {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 12px;
+      }
+
+      .card-bg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+
+      .rank-badge {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        background: rgba(11, 7, 25, 0.85);
+        backdrop-filter: blur(6px);
+        border: 1px solid rgba(121, 222, 215, 0.4);
+        border-radius: 14px;
+        padding: 2px 8px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: #79ded7;
+        z-index: 2;
+      }
+
+      .rank-badge.top-1 {
+        border-color: #ffd700;
+        color: #ffd700;
+        background: rgba(255, 215, 0, 0.2);
+      }
+
+      .player-info {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .player-name {
+        font-weight: 700;
+        font-size: 0.85rem;
+        color: #ffffff;
+        margin-bottom: 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+      }
+
+      .player-score {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #79ded7;
+        background: rgba(121, 222, 215, 0.1);
+        padding: 3px 10px;
+        border-radius: 10px;
+        width: 100%;
+      }
+
+      .player-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(121, 222, 215, 0.5);
+      }
+
+      .player-card.active {
+        width: 175px;
+        border: 2px solid #79ded7;
+        box-shadow:
+          0 0 25px rgba(121, 222, 215, 0.25),
+          0 12px 30px rgba(0, 0, 0, 0.8);
+        z-index: 5;
+        padding: 14px;
+      }
+
+      .player-card.active .card-bg {
+        transform: scale(1.05);
+      }
+
+      .player-card.active .player-name {
+        font-size: 0.95rem;
+      }
+
+      .player-card.active .player-score {
+        font-size: 0.85rem;
+        background: rgba(121, 222, 215, 0.2);
+      }
+
+      /* ----------------------------------
+       4. SEÇÃO - APOIE O PROJETO
+    ---------------------------------- */
+      .apoie-wrapper {
+        padding: 60px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 60px;
+      }
+
+      .container-apoie {
+        max-width: 1100px;
+        width: 100%;
+      }
+
+      .hero-section {
+        display: grid;
+        grid-template-columns: 1fr; /* Inicialmente 1 coluna centralizada */
+        gap: 40px;
+        align-items: start;
+        position: relative;
+        max-width: 750px;
+        margin: 0 auto;
+        transition: all 0.4s ease;
+      }
+
+      /* Quando o formulário for ativado, expande para 2 colunas */
+      .hero-section.active-form {
+        grid-template-columns: 1fr 1fr;
+        max-width: 1100px;
+      }
+
+      @media (max-width: 850px) {
+        .hero-section.active-form {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        top: -10%;
+        left: -10%;
+        width: 50%;
+        height: 70%;
+        background: radial-gradient(
+          circle,
+          rgba(121, 222, 215, 0.1) 0%,
+          rgba(11, 7, 25, 0) 70%
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .hero-left,
+      .form-card {
+        position: relative;
+        z-index: 1;
+      }
+
+      .tag-badge {
+        display: inline-block;
+        background: rgba(121, 222, 215, 0.15);
+        border: 1px solid rgba(121, 222, 215, 0.3);
+        color: #79ded7;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      .title-main {
+        font-size: 2.8rem;
+        font-weight: 900;
+        line-height: 1.1;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #ffffff;
+      }
+
+      .title-gradient {
+        background: linear-gradient(90deg, #e685ca, #79ded7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+      }
+
+      .description {
+        color: #a099c4;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 30px;
+      }
+
+      .goal-card {
+        background: #140f2b;
+        border: 1px solid #1c1538;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      }
+
+      .goal-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+      }
+
+      .goal-title {
+        font-size: 0.75rem;
+        color: #8c83b3;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+
+      .goal-values {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 16px;
+      }
+
+      .raised-amount {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #79ded7;
+        text-shadow: 0 0 12px rgba(121, 222, 215, 0.4);
+      }
+
+      .target-amount {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #ffffff;
+      }
+
+      .progress-bar-bg {
+        width: 100%;
+        height: 10px;
+        background-color: #0b0719;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 12px;
+        position: relative;
+      }
+
+      .progress-bar-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #79ded7, #e685ca);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(230, 133, 202, 0.5);
+        transition: width 0.5s ease;
+      }
+
+      .goal-footer {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        color: #8c83b3;
+      }
+
+      .actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #e685ca, #8c83b3);
+        color: #0b0719;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 800;
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(230, 133, 202, 0.4);
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.05);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      /* FORMULÁRIO (OCULTO POR PADRÃO) */
+      .form-card {
+        display: none; /* Escondido inicialmente */
+        background: #140f2b;
+        border: 1px solid #1c1538;
+        border-radius: 16px;
+        padding: 28px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        animation: fadeIn 0.4s ease forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .form-card h3 {
+        font-size: 1.2rem;
+        font-weight: 800;
+        margin-bottom: 6px;
+        letter-spacing: 0.5px;
+        color: #ffffff;
+      }
+
+      .form-card p {
+        color: #8c83b3;
+        font-size: 0.8rem;
+        margin-bottom: 24px;
+        line-height: 1.4;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-label {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #a099c4;
+        margin-bottom: 8px;
+        letter-spacing: 0.5px;
+      }
+
+      .amount-options {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+
+      .btn-amount {
+        background: #1c1538;
+        border: 1px solid #282048;
+        color: #ffffff;
+        padding: 12px 0;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .btn-amount:hover {
+        border-color: #79ded7;
+      }
+
+      .btn-amount.active {
+        background: linear-gradient(135deg, #79ded7, #1c1538);
+        border-color: #79ded7;
+        color: #0b0719;
+        box-shadow: 0 0 12px rgba(121, 222, 215, 0.3);
+      }
+
+      .input-field {
+        width: 100%;
+        background: #0b0719;
+        border: 1px solid #1c1538;
+        border-radius: 8px;
+        padding: 12px 16px;
+        color: #ffffff;
+        font-size: 0.85rem;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+
+      .input-field:focus {
+        border-color: #79ded7;
+      }
+
+      .input-field::placeholder {
+        color: #524f6e;
+      }
+
+      .btn-generate-pix {
+        width: 100%;
+        background: linear-gradient(90deg, #e685ca, #79ded7);
+        color: #0b0719;
+        border: none;
+        padding: 14px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 800;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        transition: filter 0.2s;
+        letter-spacing: 0.5px;
+      }
+
+      .btn-generate-pix:hover {
+        filter: brightness(1.15);
+      }
+
+      .security-note {
+        text-align: center;
+        font-size: 0.7rem;
+        color: #6b6294;
+        margin-top: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+      }
+
+      /* RECURSOS */
+      .resources-wrapper {
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        position: relative;
+        border-top: 1px solid #1c1538;
+        border-bottom: 1px solid #1c1538;
+        padding: 80px 20px;
+        overflow: hidden;
+      }
+
+      .resources-wrapper::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+          linear-gradient(
+            180deg,
+            rgba(11, 7, 25, 0.88) 0%,
+            rgba(20, 15, 43, 0.88) 100%
+          ),
+          url("pixelart3.gif");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.35;
+        z-index: 0;
+      }
+
+      .resources-section {
+        max-width: 1100px;
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .resources-title {
+        font-size: 2.2rem;
+        font-weight: 900;
+        margin-bottom: 12px;
+        letter-spacing: 1px;
+        color: #ffffff;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+      }
+
+      .resources-subtitle {
+        color: #a099c4;
+        font-size: 0.95rem;
+        max-width: 650px;
+        margin: 0 auto 40px auto;
+        line-height: 1.6;
+        text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+      }
+
+      .resources-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      @media (max-width: 768px) {
+        .resources-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .resource-card {
+        background: rgba(20, 15, 43, 0.8);
+        backdrop-filter: blur(8px);
+        border: 1px solid #1c1538;
+        border-radius: 16px;
+        padding: 32px 24px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        transition:
+          transform 0.2s,
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+
+      .resource-card:hover {
+        transform: translateY(-5px);
+        border-color: #79ded7;
+        box-shadow: 0 12px 30px rgba(121, 222, 215, 0.15);
+      }
+
+      .icon-box {
+        width: 48px;
+        height: 48px;
+        background: rgba(121, 222, 215, 0.15);
+        border: 1px solid rgba(121, 222, 215, 0.3);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        color: #79ded7;
+      }
+
+      .resource-card h4 {
+        font-size: 1.1rem;
+        font-weight: 800;
+        margin-bottom: 12px;
+        letter-spacing: 0.5px;
+        color: #ffffff;
+      }
+
+      .resource-card p {
+        color: #8c83b3;
+        font-size: 0.88rem;
+        line-height: 1.6;
+      }
+
+      /* ----------------------------------
+       5. RODAPÉ (FOOTER ARCADE)
+    ---------------------------------- */
+      .arcade-footer {
+        background-color: #0b0719;
+        color: #a099c4;
+        font-family: "Press Start 2P", cursive;
+        padding: 40px 20px 20px;
+        box-sizing: border-box;
+        border-top: 1px solid #1c1538;
+      }
+
+      .footer-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 30px;
+      }
+
+      .footer-brand .logo-text {
+        color: #79ded7;
+        font-size: 24px;
+        margin: 0 0 15px 0;
+        letter-spacing: 2px;
+      }
+
+      .footer-brand .tagline {
+        font-size: 10px;
+        color: #8c83b3;
+        line-height: 1.6;
+      }
+
+      .footer-column h3 {
+        color: #e685ca;
+        font-size: 12px;
+        margin-bottom: 15px;
+      }
+
+      .footer-column ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-column li {
+        margin-bottom: 10px;
+      }
+
+      .footer-column a {
+        color: #8c83b3;
+        text-decoration: none;
+        font-size: 10px;
+        transition: color 0.2s ease;
+      }
+
+      .footer-column a:hover {
+        color: #ffffff;
+      }
+
+      .footer-bottom {
+        max-width: 1100px;
+        margin: 30px auto 0;
+        padding-top: 20px;
+        border-top: 1px solid #1c1538;
+        text-align: center;
+      }
+
+      .footer-bottom p {
+        font-size: 9px;
+        color: #6b6294;
+        margin: 0;
+      }
+
+      .footer-bottom .heart {
+        color: #e685ca;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a href="#ranking">Ranking</a>
+        <a href="#sobre">Sobre</a>
+
+        <div class="logo">
+          <img src="qmath.png" alt="Logo do Projeto Social" />
+        </div>
+
+        <a href="#apoie">Apoie</a>
+        <a href="#colaboradores">Colaboradores</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero-gif-container">
+        <img src="SEU_GIF_AQUI.gif" alt="Apresentação QMATH" />
+      </section>
+
+      <section id="ranking" class="ranking-section">
+        <div class="ranking-box">
+          <div class="ranking-header">
+            <h2 class="ranking-title">Top Aventureiros</h2>
+            <p class="ranking-subtitle">Jogadores em destaque nesta semana</p>
+          </div>
+
+          <div class="cards-container" id="cardsContainer"></div>
+        </div>
+      </section>
+
+      <section id="apoie" class="apoie-wrapper">
+        <div class="container-apoie">
+          <div class="hero-section" id="heroSection">
+            <div class="hero-left">
+              <span class="tag-badge">SUPORTE VOLUNTÁRIO</span>
+              <h1 class="title-main">
+                MELHORE O SITE<br /><span class="title-gradient"
+                  >APOIE OS DEVS</span
+                >
+              </h1>
+
+              <p class="description">
+                Nosso projeto é mantido por amor e dedicação voluntária. Para
+                darmos o próximo passo importante, expandirmos a infraestrutura
+                e mantermos o site livre de anúncios e sempre atualizado,
+                precisamos do seu apoio! Qualquer valor doado nos ajuda a
+                garantir o futuro e maximizar o bem-estar de toda a nossa
+                comunidade.
+              </p>
+
+              <div class="goal-card">
+                <div class="goal-header">
+                  <span class="goal-title">ARRECADADO</span>
+                  <span class="goal-title">META MENSAL</span>
+                </div>
+
+                <div class="goal-values">
+                  <span class="raised-amount" id="raised-text">R$ 0,00</span>
+                  <span class="target-amount" id="target-text"
+                    >R$ 1.000,00</span
+                  >
+                </div>
+
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" id="progress-fill"></div>
+                </div>
+
+                <div class="goal-footer">
+                  <span id="supporters-count">👥 0 apoios este mês</span>
+                  <span id="percentage-text">0.00% Concluído</span>
+                </div>
+              </div>
+
+              <div class="actions">
+                <button class="btn-primary" onclick="scrollToForm()">
+                  FAZER APOIO &rarr;
+                </button>
+                <button class="btn-secondary">SABER MAIS</button>
+              </div>
+            </div>
+
+            <div class="form-card" id="donation-form">
+              <h3>SEU APOIO VOLUNTÁRIO</h3>
+              <p>
+                Cada real voluntário é maximizado e revertido para servidores de
+                alta performance e melhorias técnicas no projeto.
+              </p>
+
+              <div class="form-group">
+                <label class="form-label">SELECIONE O VALOR</label>
+                <div class="amount-options">
+                  <button
+                    type="button"
+                    class="btn-amount active"
+                    data-value="10"
+                  >
+                    R$ 10
+                  </button>
+                  <button type="button" class="btn-amount" data-value="20">
+                    R$ 20
+                  </button>
+                  <button type="button" class="btn-amount" data-value="50">
+                    R$ 50
+                  </button>
+                  <button type="button" class="btn-amount" data-value="outros">
+                    Outro
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="username"
+                  >SEU NOME (OPCIONAL)</label
+                >
+                <input
+                  type="text"
+                  id="username"
+                  class="input-field"
+                  placeholder="Ex: Guilherme S. (ou deixe em branco)"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="message"
+                  >SUA MENSAGEM DE APOIO (OPCIONAL)</label
+                >
+                <input
+                  type="text"
+                  id="message"
+                  class="input-field"
+                  placeholder="Ex: Excelente projeto! Muito sucesso para todos."
+                />
+              </div>
+
+              <button type="button" class="btn-generate-pix" id="btn-submit">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+                  />
+                </svg>
+                GERAR QR CODE PIX
+              </button>
+
+              <div class="security-note">Transação simulada e 100% segura</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="resources-wrapper">
+          <section class="resources-section">
+            <h2 class="resources-title">PARA ONDE VÃO OS RECURSOS?</h2>
+            <p class="resources-subtitle">
+              Utilizamos todos os recursos arrecadados de forma transparente,
+              focando exclusivamente na melhoria do site e do jogo para os
+              nossos usuários.
+            </p>
+
+            <div class="resources-grid">
+              <div class="resource-card">
+                <div class="icon-box">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
+                </div>
+                <h4>APOIO AOS DEVS</h4>
+                <p>
+                  Ajude a cobrir os custos e recompensar as horas de trabalho da
+                  nossa dedicada equipe de programadores, que se esforçam
+                  diariamente para desenvolver novas funcionalidades de ponta.
+                </p>
+              </div>
+
+              <div class="resource-card">
+                <div class="icon-box">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <rect
+                      x="2"
+                      y="2"
+                      width="20"
+                      height="8"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <rect
+                      x="2"
+                      y="14"
+                      width="20"
+                      height="8"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                    <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                  </svg>
+                </div>
+                <h4>FUTURAS MELHORIAS</h4>
+                <p>
+                  Representa os recursos que usaríamos para adicionar novas
+                  telas, jogos e conteúdos exclusivos no site no futuro.
+                </p>
+              </div>
+
+              <div class="resource-card">
+                <div class="icon-box">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                </div>
+                <h4>EXPANSÃO DO PROJETO</h4>
+                <p>
+                  Permita que nossa equipe traga artistas, modeladores e
+                  produtores adicionais para expandir o conteúdo, adicionando
+                  novas seções ricas, áudio, vídeos e experiências interativas
+                  de alto nível.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="arcade-footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h2 class="logo-text">Qmath</h2>
+          <p class="tagline">Exercícios de Matemática</p>
+        </div>
+
+        <div class="footer-column">
+          <h3>LINKS</h3>
+          <ul>
+            <li><a href="#">Jogos</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#">Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>CONECTE-SE</h3>
+          <ul>
+            <li>
+              <a
+                href="https://www.instagram.com/terceirao._ds?igsh=OTVmN3J1ejhnNHd2"
+                target="_blank"
+                rel="noopener"
+                >Instagram</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Qmath • Feito com <span class="heart">♥</span></p>
+      </div>
+    </footer>
+
+    <script>
+      /* LÓGICA DO RANKING */
+      const jogadores = [
+        {
+          posicao: "1º",
+          nome: "Asuka Renjou",
+          pontos: "11.200 pts",
+          avatar:
+            "",
+          destaque: true,
+        },
+        {
+          posicao: "2º",
+          nome: "Takeru Hoshino",
+          pontos: "14.800 pts",
+          avatar:
+            "",
+        },
+        {
+          posicao: "3º",
+          nome: "Lyara Veylith",
+          pontos: "15.420 pts",
+          avatar:
+            "",
+        },
+        {
+          posicao: "4º",
+          nome: "Shiro Kazama",
+          pontos: "13.950 pts",
+          avatar:
+            "",
+        },
+        {
+          posicao: "5º",
+          nome: "Kaede Kisaragi",
+          pontos: "12.100 pts",
+          avatar:
+            "",
+        },
+      ];
+
+      const container = document.getElementById("cardsContainer");
+
+      function renderizarCards() {
+        container.innerHTML = "";
+
+        jogadores.forEach((jogador) => {
+          const card = document.createElement("div");
+          card.className = `player-card ${jogador.destaque ? "active" : ""}`;
+
+          const isTop1 = jogador.posicao === "1º";
+
+          card.innerHTML = `
           <div class="photo-container">
-            <div class="rank-badge ${isTop1 ? 'top-1' : ''}">${jogador.posicao}</div>
+            <div class="rank-badge ${isTop1 ? "top-1" : ""}">${jogador.posicao}</div>
             <img class="card-bg" src="${jogador.avatar}" alt="${jogador.nome}">
           </div>
           <div class="player-info">
@@ -457,16 +1162,120 @@
           </div>
         `;
 
-        card.addEventListener('click', () => {
-          document.querySelectorAll('.player-card').forEach(c => c.classList.remove('active'));
-          card.classList.add('active');
+          card.addEventListener("click", () => {
+            document
+              .querySelectorAll(".player-card")
+              .forEach((c) => c.classList.remove("active"));
+            card.classList.add("active");
+          });
+
+          container.appendChild(card);
         });
+      }
 
-        container.appendChild(card);
+      renderizarCards();
+
+      /* LÓGICA DE APOIO E DOAÇÕES */
+      let raisedAmount = 0.0;
+      const targetAmount = 1000.0;
+      let totalSupporters = 0;
+      let selectedValue = 10;
+
+      function updateGoalProgress() {
+        const percentage = ((raisedAmount / targetAmount) * 100).toFixed(2);
+
+        document.getElementById("raised-text").innerText =
+          `R$ ${raisedAmount.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`;
+        document.getElementById("target-text").innerText =
+          `R$ ${targetAmount.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`;
+        document.getElementById("percentage-text").innerText =
+          `${percentage}% Concluído`;
+        document.getElementById("supporters-count").innerText =
+          `👥 ${totalSupporters} apoios este mês`;
+        document.getElementById("progress-fill").style.width =
+          `${Math.min(percentage, 100)}%`;
+      }
+
+      const amountButtons = document.querySelectorAll(".btn-amount");
+      amountButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          amountButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          const val = btn.getAttribute("data-value");
+          if (val === "outros") {
+            const customValue = prompt("Digite o valor desejado em R$:", "100");
+            selectedValue = parseFloat(customValue) || 0;
+          } else {
+            selectedValue = parseFloat(val);
+          }
+        });
       });
-    }
 
-    renderizarCards();
-  </script>
-</body>
+      document.getElementById("btn-submit").addEventListener("click", () => {
+        if (selectedValue <= 0) {
+          alert("Por favor, escolha um valor válido para apoiar.");
+          return;
+        }
+
+        const name =
+          document.getElementById("username").value.trim() || "Anônimo";
+
+        raisedAmount += selectedValue;
+        totalSupporters += 1;
+        updateGoalProgress();
+
+        alert(
+          `Obrigado pelo seu apoio, ${name}!\n\nUm QR Code Pix simulado para o valor de R$ ${selectedValue.toFixed(2)} foi gerado com sucesso.`,
+        );
+      });
+
+      /* FUNÇÃO PARA REVELAR E ROLAR ATÉ O FORMULÁRIO */
+      function scrollToForm() {
+        const formCard = document.getElementById("donation-form");
+        const heroSection = document.getElementById("heroSection");
+
+        // Revela o formulário e reajusta o layout para 2 colunas
+        formCard.style.display = "block";
+        heroSection.classList.add("active-form");
+
+        // Rola a tela até o formulário de forma suave
+        setTimeout(() => {
+          formCard.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 50);
+      }
+
+      updateGoalProgress();
+
+      // Smooth scroll e animação de clique para links no cabeçalho
+      (function () {
+        const navbar = document.querySelector(".navbar");
+        const links = document.querySelectorAll('.navbar a[href^="#"]');
+        const headerOffset = navbar ? navbar.offsetHeight : 0;
+
+        links.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            const href = link.getAttribute("href");
+            if (!href || href === "#") return;
+            const target = document.querySelector(href);
+            if (!target) return;
+
+            e.preventDefault();
+
+            // Animação visual do clique
+            link.classList.add("click-animate");
+            setTimeout(() => link.classList.remove("click-animate"), 220);
+
+            // Rola com offset considerando navbar fixa
+            const targetY =
+              target.getBoundingClientRect().top +
+              window.pageYOffset -
+              headerOffset -
+              8;
+            window.scrollTo({ top: targetY, behavior: "smooth" });
+          });
+        });
+      })();
+    </script>
+  </body>
 </html>
