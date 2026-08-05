@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="shortcut icon" type="image/x-icon" href="qmath.png">
+  <title>QMATH | Página Inicial</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Inter:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <style>
+    /* ----------------------------------
+       RESET E ESTILOS GERAIS
+    ---------------------------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0b0719; /* Fundo roxo escuro do rodapé */
+      color: #a099c4;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ----------------------------------
+       1. NAV BAR (MENU SUPERIOR)
+    ---------------------------------- */
+    .navbar {
+      width: 100%;
+      padding: 15px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background-color: rgba(11, 7, 25, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #1c1538;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      font-family: 'Baloo 2', cursive;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #a099c4;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #79ded7; /* Ciano pixel */
+      text-shadow: 0 0 8px rgba(121, 222, 215, 0.4);
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .logo img {
+      width: 80px;
+      height: auto;
+    }
+
+    /* ----------------------------------
+       2. ÁREA DO GIF EM TELA CHEIA (HERO)
+    ---------------------------------- */
+    .hero-gif-container {
+      width: 100%;
+      height: 100vh; /* Ocupa exatamente 100% da altura da tela */
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-color: #0b0719;
+    }
+
+    .hero-gif-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Garante que o GIF preencha toda a tela sem distorcer */
+      display: block;
+    }
+
+    /* ----------------------------------
+       3. SEÇÃO PRINCIPAL - RANKING
+    ---------------------------------- */
+    .ranking-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 80px 20px;
+    }
+
+    .ranking-box {
+      background-color: #140f2b;
+      border: 1px solid #1c1538;
+      border-radius: 24px;
+      padding: 30px;
+      width: 980px;
+      height: 480px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(121, 222, 215, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .ranking-header {
+      text-align: center;
+    }
+
+    .ranking-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #e685ca; /* Rosa pixel */
+      text-transform: uppercase;
+    }
+
+    .ranking-subtitle {
+      font-size: 0.85rem;
+      color: #8c83b3;
+      margin-top: 4px;
+    }
+
+    .cards-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      height: 320px;
+    }
+
+    .player-card {
+      position: relative;
+      width: 150px;
+      background: #1c1538;
+      border: 1px solid rgba(160, 153, 196, 0.15);
+      border-radius: 16px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      flex-shrink: 0;
+    }
+
+    .photo-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .card-bg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .rank-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: rgba(11, 7, 25, 0.85);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(121, 222, 215, 0.4);
+      border-radius: 14px;
+      padding: 2px 8px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #79ded7;
+      z-index: 2;
+    }
+
+    .rank-badge.top-1 {
+      border-color: #e685ca;
+      color: #e685ca;
+      background: rgba(230, 133, 202, 0.2);
+    }
+
+    .player-info {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .player-name {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #ffffff;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    .player-score {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #79ded7;
+      background: rgba(121, 222, 215, 0.1);
+      padding: 3px 10px;
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    .player-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(121, 222, 215, 0.5);
+    }
+
+    .player-card.active {
+      width: 175px;
+      border: 2px solid #79ded7;
+      box-shadow: 0 0 25px rgba(121, 222, 215, 0.25), 0 12px 30px rgba(0, 0, 0, 0.8);
+      z-index: 5;
+      padding: 14px;
+    }
+
+    .player-card.active .card-bg {
+      transform: scale(1.05);
+    }
+
+    .player-card.active .player-name {
+      font-size: 0.95rem;
+    }
+
+    .player-card.active .player-score {
+      font-size: 0.85rem;
+      background: rgba(121, 222, 215, 0.2);
+    }
+
+    /* ----------------------------------
+       4. RODAPÉ (FOOTER ARCADE)
+    ---------------------------------- */
+    .arcade-footer {
+      background-color: #0b0719;
+      color: #a099c4;
+      font-family: 'Press Start 2P', cursive;
+      padding: 40px 20px 20px;
+      box-sizing: border-box;
+      border-top: 1px solid #1c1538;
+    }
+
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .footer-brand .logo-text {
+      color: #79ded7;
+      font-size: 24px;
+      margin: 0 0 15px 0;
+      letter-spacing: 2px;
+    }
+
+    .footer-brand .tagline {
+      font-size: 10px;
+      color: #8c83b3;
+      line-height: 1.6;
+    }
+
+    .footer-column h3 {
+      color: #e685ca;
+      font-size: 12px;
+      margin-bottom: 15px;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-column li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column a {
+      color: #8c83b3;
+      text-decoration: none;
+      font-size: 10px;
+      transition: color 0.2s ease;
+    }
+
+    .footer-column a:hover {
+      color: #ffffff;
+    }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 30px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid #1c1538;
+      text-align: center;
+    }
+
+    .footer-bottom p {
+      font-size: 9px;
+      color: #6b6294;
+      margin: 0;
+    }
+
+    .footer-bottom .heart {
+      color: #e685ca;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <a href="#ranking">Ranking</a>
+      <a href="#sobre">Sobre</a>
+
+      <div class="logo">
+        <img src="qmath.png" alt="Logo do Projeto Social" />
+      </div>
+
+      <a href="#apoie">Apoie</a>
+      <a href="#colaboradores">Colaboradores</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-gif-container">
+      <img src="SEU_GIF_AQUI.gif" alt="Apresentação QMATH" />
+    </section>
+
+    <section id="ranking" class="ranking-section">
+      <div class="ranking-box">
+        <div class="ranking-header">
+          <h2 class="ranking-title">Top Aventureiros</h2>
+          <p class="ranking-subtitle">Jogadores em destaque nesta semana</p>
+        </div>
+        
+        <div class="cards-container" id="cardsContainer"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="arcade-footer">
+    <div class="footer-container">
+      
+      <div class="footer-brand">
+        <h2 class="logo-text">Qmath</h2>
+        <p class="tagline">Exercícios de Matemática</p>
+      </div>
+
+      <div class="footer-column">
+        <h3>LINKS</h3>
+        <ul>
+          <li><a href="#">Jogos</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>CONECTE-SE</h3>
+        <ul>
+          <li><a href="https://www.instagram.com/terceirao._ds?igsh=OTVmN3J1ejhnNHd2" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Qmath • Feito com <span class="heart">♥</span></p>
+    </div>
+  </footer>
+
+  <script>
+    const jogadores = [
+      {
+        posicao: "5º",
+        nome: "Asuka Renjou",
+        pontos: "11.200 pts",
+        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        posicao: "2º",
+        nome: "Takeru Hoshino",
+        pontos: "14.800 pts",
+        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        posicao: "1º",
+        nome: "Lyara Veylith",
+        pontos: "15.420 pts",
+        avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80",
+        destaque: true
+      },
+      {
+        posicao: "3º",
+        nome: "Shiro Kazama",
+        pontos: "13.950 pts",
+        avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        posicao: "4º",
+        nome: "Kaede Kisaragi",
+        pontos: "12.100 pts",
+        avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80"
+      }
+    ];
+
+    const container = document.getElementById('cardsContainer');
+
+    function renderizarCards() {
+      container.innerHTML = '';
+
+      jogadores.forEach((jogador) => {
+        const card = document.createElement('div');
+        card.className = `player-card ${jogador.destaque ? 'active' : ''}`;
+        
+        const isTop1 = jogador.posicao === "1º";
+
+        card.innerHTML = `
+          <div class="photo-container">
+            <div class="rank-badge ${isTop1 ? 'top-1' : ''}">${jogador.posicao}</div>
+            <img class="card-bg" src="${jogador.avatar}" alt="${jogador.nome}">
+          </div>
+          <div class="player-info">
+            <div class="player-name">${jogador.nome}</div>
+            <div class="player-score">${jogador.pontos}</div>
+          </div>
+        `;
+
+        card.addEventListener('click', () => {
+          document.querySelectorAll('.player-card').forEach(c => c.classList.remove('active'));
+          card.classList.add('active');
+        });
+
+        container.appendChild(card);
+      });
+    }
+
+    renderizarCards();
+  </script>
+</body>
+</html>

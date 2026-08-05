@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking QMATH - Container Fixo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Fundo geral da tela */
+        body {
+            background-color: #060714;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* PAINEL CENTRAL (TAMANHO FIXO) */
+        .ranking-box {
+            background-color: #11132c;
+            border: 1px solid rgba(146, 213, 255, 0.12);
+            border-radius: 24px;
+            padding: 30px;
+            
+            /* LARGURA E ALTURA FIXAS AQUI */
+            width: 980px;
+            height: 480px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 40px rgba(146, 213, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between; /* Distribui o cabeçalho e os cards sem esticar */
+        }
+
+        .ranking-header {
+            text-align: center;
+        }
+
+        .ranking-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .ranking-subtitle {
+            font-size: 0.85rem;
+            color: #8c90ad;
+            margin-top: 4px;
+        }
+
+        /* AREA DOS CARDS (ALTURA RESERVADA FIXA) */
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Centraliza verticalmente o card maior e os menores */
+            gap: 14px;
+            width: 100%;
+            height: 340px; /* Altura máxima reservada para caber o card ativo sem redimensionar a caixa */
+        }
+
+        /* Card Padrão */
+        .player-card {
+            position: relative;
+            width: 150px;
+            background: #161838;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            flex-shrink: 0;
+        }
+
+        /* Foto Quadrada */
+        .photo-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .card-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        /* Badge de Posição */
+        .rank-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: rgba(11, 13, 33, 0.8);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(146, 213, 255, 0.3);
+            border-radius: 14px;
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #92d5ff;
+            z-index: 2;
+        }
+
+        .rank-badge.top-1 {
+            border-color: #FFD700;
+            color: #FFD700;
+            background: rgba(255, 215, 0, 0.2);
+        }
+
+        /* Informações do Jogador */
+        .player-info {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .player-name {
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #ffffff;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+
+        .player-title-sub {
+            font-size: 0.65rem;
+            color: #8c90ad;
+            margin-bottom: 8px;
+        }
+
+        .player-score {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #92d5ff;
+            background: rgba(146, 213, 255, 0.1);
+            padding: 3px 10px;
+            border-radius: 10px;
+            width: 100%;
+        }
+
+        .player-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(146, 213, 255, 0.4);
+        }
+
+        /* Card Ativo em Destaque */
+        .player-card.active {
+            width: 175px;
+            border: 2px solid #92d5ff;
+            box-shadow: 0 0 25px rgba(146, 213, 255, 0.35), 0 12px 30px rgba(0, 0, 0, 0.8);
+            z-index: 5;
+            padding: 14px;
+        }
+
+        .player-card.active .card-bg {
+            transform: scale(1.05);
+        }
+
+        .player-card.active .player-name {
+            font-size: 0.95rem;
+        }
+
+        .player-card.active .player-score {
+            font-size: 0.85rem;
+            background: rgba(146, 213, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ranking-box">
+        <div class="ranking-header">
+            <h2 class="ranking-title">Top Aventureiros</h2>
+            <p class="ranking-subtitle">Jogadores em destaque nesta semana</p>
+        </div>
+        
+        <div class="cards-container" id="cardsContainer">
+            </div>
+    </div>
+
+    <script>
+        const jogadores = [
+            {
+                posicao: "5º",
+                nome: "Asuka Renjou",
+                pontos: "11.200 pts",
+                avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                posicao: "2º",
+                nome: "Takeru Hoshino",
+                pontos: "14.800 pts",
+                avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                posicao: "1º",
+                nome: "Lyara Veylith",
+                pontos: "15.420 pts",
+                avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80",
+                destaque: true
+            },
+            {
+                posicao: "3º",
+                nome: "Shiro Kazama",
+                pontos: "13.950 pts",
+                avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                posicao: "4º",
+                nome: "Kaede Kisaragi",
+                pontos: "12.100 pts",
+                avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80"
+            }
+        ];
+
+        const container = document.getElementById('cardsContainer');
+
+        function renderizarCards() {
+            container.innerHTML = '';
+
+            jogadores.forEach((jogador) => {
+                const card = document.createElement('div');
+                card.className = `player-card ${jogador.destaque ? 'active' : ''}`;
+                
+                const isTop1 = jogador.posicao === "1º";
+
+                card.innerHTML = `
+                    <div class="photo-container">
+                        <div class="rank-badge ${isTop1 ? 'top-1' : ''}">${jogador.posicao}</div>
+                        <img class="card-bg" src="${jogador.avatar}" alt="${jogador.nome}">
+                    </div>
+                    <div class="player-info">
+                        <div class="player-name">${jogador.nome}</div>
+                        <div class="player-score">${jogador.pontos}</div>
+                    </div>
+                `;
+
+                card.addEventListener('click', () => {
+                    document.querySelectorAll('.player-card').forEach(c => c.classList.remove('active'));
+                    card.classList.add('active');
+                });
+
+                container.appendChild(card);
+            });
+        }
+
+        renderizarCards();
+    </script>
+</body>
+</html>
