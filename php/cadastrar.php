@@ -8,8 +8,24 @@ $senha = $_POST['senha'];
 $confirmar = $_POST['confirmar_senha'];
 
 if ($senha != $confirmar) {
+    echo "<script>
+            alert('As senhas não são iguais!');
+            window.history.back();
+          </script>";
     exit;
 }
+
+$sql_verifica = "SELECT * FROM usuarios WHERE matricula = '$matricula'";
+$resultado = mysqli_query($mysqli, $sql_verifica);
+
+if (mysqli_num_rows($resultado) > 0) {
+    echo "<script>
+            alert('Essa matrícula já está cadastrada!');
+            window.history.back();
+          </script>";
+    exit;
+}
+
 
 $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
 
@@ -30,7 +46,7 @@ if($mysqli->query($sql) === TRUE) {
 }
 
 $mysqli->close();
-
+// preciso colocar o cadlog como index.php, e trocar esses headers
 header('Location: ../CadLog.html');
 exit;
 ?>
