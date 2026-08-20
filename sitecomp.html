@@ -122,6 +122,50 @@
         height: auto;
       }
 
+/* Container que alinha perfeitamente com o botão original */
+.user-dropdown-container {
+position: relative;
+display: inline-flex;
+align-items: center;
+}
+
+/* Submenu posicionamento exato */
+.dropdown-menu {
+display: none;
+position: absolute;
+top: 100%;
+left: 0;
+width: 100%; /* Força ter exatamente a mesma largura do botão Entrar */
+padding-top: 6px;
+z-index: 1000;
+}
+
+.user-dropdown-container:hover .dropdown-menu {
+display: block;
+}
+
+/* Botão Sair mais delicado e proporcional */
+.dropdown-item {
+width: 100%;
+background-color: #140f2b;
+border: 1.5px solid #e685ca;
+color: #e685ca;
+font-family: inherit;
+font-size: 0.8rem;
+padding: 6px 10px;
+border-radius: 12px;
+cursor: pointer;
+text-align: center;
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+background-color: #e685ca;
+color: #140f2b;
+box-shadow: 0 0 10px rgba(230, 133, 202, 0.4);
+}
+
       /* ----------------------------------
        2. ÁREA DO GIF EM TELA CHEIA (HERO)
     ---------------------------------- */
@@ -644,6 +688,60 @@
         gap: 4px;
       }
 
+      /* SEÇÃO SOBRE */
+.about-section {
+width: 90%;
+max-width: 900px;
+margin: 40px auto;
+text-align: center;
+}
+
+.about-title {
+font-family: 'Press Start 2P', cursive;
+color: var(--cyan-detail);
+font-size: 1.6rem;
+margin-bottom: 25px;
+text-shadow: 2px 2px var(--main-purple);
+}
+
+.about-box {
+background: rgba(29, 31, 90, 0.85);
+border: 3px solid var(--secondary-purple);
+border-radius: 15px;
+padding: 35px;
+box-shadow: 0 0 20px rgba(91, 210, 244, 0.2);
+}
+
+.about-text {
+font-size: 1.4rem;
+line-height: 1.6;
+color: #e2e8f0;
+}
+
+.about-text strong {
+color: var(--cyan-detail);
+}
+
+/* ESTILO EXCLUSIVO PARA A OPÇÃO C (LISTA) */
+.about-list {
+list-style: none;
+text-align: left;
+display: flex;
+flex-direction: column;
+gap: 15px;
+}
+
+.about-list li {
+font-size: 1.3rem;
+line-height: 1.5;
+color: #e2e8f0;
+}
+
+.about-list strong {
+color: var(--cyan-detail);
+}
+
+
       /* RECURSOS */
       .resources-wrapper {
         width: 100vw;
@@ -1011,31 +1109,6 @@ width: 98%;
 max-width: 1400px; /* <--- Deixa a estrutura expandir quase a tela toda */
 }
 
-/* Botoes de Navegação Laterais */
-.nav-btn {
-background: var(--main-purple);
-border: 2px solid var(--secondary-purple);
-color: #fff;
-font-family: 'Press Start 2P', cursive;
-font-size: 1.8rem;
-padding: 22px 25px;
-border-radius: 12px;
-cursor: pointer;
-box-shadow: 0 4px 0px var(--dark-purple);
-transition: all 0.1s ease;
-}
-
-.nav-btn:hover {
-background: var(--secondary-purple);
-color: var(--dark-purple);
-transform: translateY(-2px);
-}
-
-.nav-btn:active {
-transform: translateY(2px);
-box-shadow: 0 1px 0px var(--dark-purple);
-}
-
 /* ESTRUTURA DA TV */
 .crt-tv {
 background: #23254d;
@@ -1257,18 +1330,21 @@ font-size: 1rem;
 
         <a href="#apoie">Apoie</a>
         <a href="#colaboradores">Colaboradores</a>
-        <!-- Botão Entrar -->
-      <a href="CadLog.html" class="btn-login">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-        </svg>
-        Entrar
-      </a>
-      </nav>
-    </header>
-    <main class="tv-container">
-
-<button class="nav-btn prev-btn" id="prevBtn">&lt;</button>
+        <!-- Botão Entrar com Dropdown Logout -->
+<div class="user-dropdown-container">
+<a href="CadLog.html" class="btn-login">
+<svg viewBox="0 0 24 24">
+<path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+</svg>
+Entrar
+</a>
+<div class="dropdown-menu">
+<button id="logout-btn" class="dropdown-item">Sair</button>
+</div>
+</div>
+</nav>
+</header>
+<main class="tv-container">
 
 <div class="crt-tv">
 <div class="screen-wrapper">
@@ -1297,17 +1373,24 @@ Explore um mundo cyberpunk cheio de mistérios e perigos ocultos.
 </div>
 </div>
 
-<button class="nav-btn next-btn" id="nextBtn">&gt;</button>
-
 </main>
 
 <div class="dots-container" id="dotsContainer"></div>
 
 <script src="script.js"></script>
     <main>
-      <section class="hero-gif-container">
-        <img src="SEU_GIF_AQUI.gif" alt="Apresentação QMATH" />
-      </section>
+      <section id="sobre" class="about-section">
+<div class="about-box">
+<h2 class="about-title">APRENDER E JOGAR</h2>
+<p class="about-text">
+Desenvolvido por alunos para alunos, o <strong>QMATH</strong> é uma iniciativa social que usa a gamificação 
+para reforçar os estudos de matemática. Através de desafios 
+em formato de games clássicos, provamos que é possível treinar o 
+raciocínio lógico, superar a ansiedade com os números e evoluir na 
+matéria enquanto se diverte.
+</p>
+</div>
+</section>
 
       <section id="ranking" class="ranking-section">
         <div class="ranking-box">

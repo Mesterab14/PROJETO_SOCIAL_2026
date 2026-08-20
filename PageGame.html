@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QMATH - Jogo</title>
+<link rel="shortcut icon" type="image/x-icon" href="img/imagem_2026-05-20_140644013-removebg-preview.png">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body {
+height: 100vh;
+width: 100vw;
+background-color: #121440;
+color: #ffffff;
+font-family: 'Rajdhani', sans-serif;
+overflow: hidden;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+.cabeca {
+padding: 20px 40px; /* Mais espaço no topo */
+}
+
+.btn-voltar-aesthetic {
+display: inline-flex;
+align-items: center;
+gap: 12px;
+padding: 10px 20px;
+background: linear-gradient(135deg, rgba(20, 15, 43, 0.8), rgba(30, 20, 60, 0.9));
+border: 2px solid #79ded7;
+border-radius: 12px;
+color: #79ded7;
+font-family: 'Rajdhani', sans-serif;
+font-size: 1.2rem;
+font-weight: 700;
+letter-spacing: 2px;
+cursor: pointer;
+backdrop-filter: blur(8px);
+box-shadow: 0 0 15px rgba(121, 222, 215, 0.2),
+inset 0 0 10px rgba(121, 222, 215, 0.1);
+transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-voltar-aesthetic svg {
+width: 20px;
+height: 20px;
+transition: transform 0.3s ease;
+}
+
+/* Efeito Hover Neon em Rosa */
+.btn-voltar-aesthetic:hover {
+color: #ffffff;
+border-color: #e685ca;
+background: linear-gradient(135deg, #e685ca, #9b51e0);
+box-shadow: 0 0 25px rgba(230, 133, 202, 0.7),
+0 0 40px rgba(230, 133, 202, 0.4);
+transform: translateY(-3px) scale(1.05);
+}
+
+.btn-voltar-aesthetic:hover svg {
+transform: translateX(-5px); /* Seta desliza pra esquerda */
+}
+
+.btn-voltar-aesthetic:active {
+transform: translateY(0) scale(0.98);
+}
+
+.btn-voltar {
+background-color: transparent;
+border: none;
+cursor: pointer;
+transition: transform 0.2s ease;
+}
+
+.btn-voltar:hover {
+transform: scale(1.1);
+}
+
+.bi-arrow-bar-left {
+color: #79ded7;
+width: 20px;
+height: 20px;
+}
+
+/* Layout Geral Ampliado */
+.game-container {
+display: flex;
+align-items: stretch; /* Estica as duas colunas igualmente */
+justify-content: center;
+gap: 60px;
+max-width: 1350px;
+width: 92%;
+height: 70vh; /* Aumenta a altura total do card central */
+margin: 0 auto;
+flex: 1;
+}
+
+/* Carrossel Maior */
+.carrossel-container {
+position: relative;
+flex: 1.2; /* Ganha mais espaço na tela */
+height: 100%;
+overflow: hidden;
+border-radius: 20px;
+border: 2px solid #1c1538;
+box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 30px rgba(121, 222, 215, 0.15);
+background-color: #140f2b;
+}
+
+.carrossel-slides {
+display: flex;
+width: 100%;
+height: 100%;
+transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+min-width: 100%;
+height: 100%;
+}
+
+.slide img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+.btn-nav {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+background-color: rgba(20, 15, 43, 0.8);
+color: #79ded7;
+border: 1.5px solid #79ded7;
+padding: 14px 18px;
+cursor: pointer;
+font-size: 20px;
+border-radius: 50%;
+transition: all 0.3s ease;
+}
+
+.btn-nav:hover {
+background-color: #79ded7;
+color: #121440;
+box-shadow: 0 0 15px rgba(121, 222, 215, 0.6);
+}
+
+.btn-anterior { left: 18px; }
+.btn-proximo { right: 18px; }
+
+.indicadores {
+position: absolute;
+bottom: 18px;
+left: 50%;
+transform: translateX(-50%);
+display: flex;
+gap: 10px;
+}
+
+.bolinha {
+width: 12px;
+height: 12px;
+background-color: rgba(255, 255, 255, 0.3);
+border-radius: 50%;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.bolinha.ativo {
+background-color: #79ded7;
+transform: scale(1.4);
+box-shadow: 0 0 8px #79ded7;
+}
+
+/* Coluna de Informações Espaçada */
+.info-container {
+flex: 1;
+display: flex;
+flex-direction: column;
+justify-content: space-between; /* Empurra o título pro topo e o botão pra baixo */
+align-items: flex-start;
+padding: 15px 0;
+}
+
+.titulo-jogo {
+font-family: 'Press Start 2P', cursive;
+font-size: 2.3rem; /* Título bem maior e imponente */
+line-height: 1.3;
+color: #79ded7;
+text-shadow: 3px 3px #e685ca, 0 0 15px rgba(121, 222, 215, 0.4);
+}
+
+.descricao-jogo {
+color: #a099c4;
+font-size: 1.25rem;
+line-height: 1.7;
+max-width: 520px;
+}
+
+.play-button {
+width: 100%;
+max-width: 300px;
+padding: 18px 0;
+font-family: 'Press Start 2P', cursive;
+font-size: 1.1rem;
+color: #121440;
+background: linear-gradient(135deg, #79ded7, #5bc4bd);
+border: none;
+border-radius: 14px;
+cursor: pointer;
+box-shadow: 0 0 20px rgba(121, 222, 215, 0.4);
+transition: all 0.3s ease;
+}
+
+.play-button:hover {
+background: linear-gradient(135deg, #e685ca, #c562a8);
+color: #ffffff;
+box-shadow: 0 0 30px rgba(230, 133, 202, 0.7);
+transform: translateY(-4px);
+}
+
+footer {
+padding: 20px 60px;
+color: rgba(255, 255, 255, 0.5);
+font-size: 0.9rem;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Botão Voltar -->
+<div class="cabeca">
+<button class="btn-voltar-aesthetic" onclick="window.location.href='index.html'">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<line x1="19" y1="12" x2="5" y2="12"></line>
+<polyline points="12 19 5 12 12 5"></polyline>
+</svg>
+</button>
+</div>
+
+<!-- Container do JS -->
+<main id="app-game"></main>
+
+<!-- Rodapé -->
+<footer>
+<p>&copy; 2026 . QMATH</p>
+</footer>
+
+<!-- JAVASCRIPT CORRIGIDO -->
+<script>
+// LISTA DOS 3 JOGOS
+const listaDeJogos = [
+{
+nome: "Jogo 1",
+descricao: "Explore um mundo cyberpunk cheio de mistérios, resolução de desafios matemáticos e perigos ocultos. Encare fases desafiadoras para conquistar o ranking!",
+imagem: "https://picsum.photos/800/600?random=1",
+link: "jogo1.html"
+},
+{
+nome: "Jogo 2",
+descricao: "Teste suas habilidades lógicas em uma jornada acadêmica cheia de quebra-cabeças. Supere os obstáculos e suba no topo dos melhores alunos!",
+imagem: "https://picsum.photos/800/600?random=2",
+link: "jogo2.html"
+},
+{
+nome: "Jogo 3",
+descricao: "Viaje pelo cosmos resolvendo equações em tempo real para pilotar sua nave com precisão e desviar dos asteroides pelo espaço!",
+imagem: "https://picsum.photos/800/600?random=3",
+link: "jogo3.html"
+}
+];
+
+let indexAtual = 0;
+
+function montarTelaJogo() {
+const app = document.getElementById('app-game');
+
+const slidesHTML = listaDeJogos.map(function(jogo) {
+return '<div class="slide"><img src="' + jogo.imagem + '" alt="' + jogo.nome + '"></div>';
+}).join('');
+
+const bolinhasHTML = listaDeJogos.map(function(_, i) {
+return '<div class="bolinha ' + (i === 0 ? 'ativo' : '') + '" onclick="irParaSlide(' + i + ')"></div>';
+}).join('');
+
+app.innerHTML =
+'<div class="game-container">' +
+'<div class="carrossel-container">' +
+'<div class="carrossel-slides" id="slides">' + slidesHTML + '</div>' +
+'<button class="btn-nav btn-anterior" onclick="mudarSlide(-1)">&#10094;</button>' +
+'<button class="btn-nav btn-proximo" onclick="mudarSlide(1)">&#10095;</button>' +
+'<div class="indicadores">' + bolinhasHTML + '</div>' +
+'</div>' +
+'<div class="info-container">' +
+'<h1 class="titulo-jogo" id="titulo">' + listaDeJogos[0].nome + '</h1>' +
+'<p class="descricao-jogo" id="descricao">' + listaDeJogos[0].descricao + '</p>' +
+'<button class="play-button" id="btn-jogar" onclick="iniciarJogo()">JOGAR</button>' +
+'</div>' +
+'</div>';
+}
+
+function atualizarTela() {
+const containerSlides = document.getElementById('slides');
+const bolinhas = document.querySelectorAll('.bolinha');
+const tituloEl = document.getElementById('titulo');
+const descricaoEl = document.getElementById('descricao');
+
+// Move o carrossel de fotos
+containerSlides.style.transform = 'translateX(' + (-indexAtual * 100) + '%)';
+
+// Atualiza as bolinhas acesas
+bolinhas.forEach(function(bolinha, i) {
+if (i === indexAtual) {
+bolinha.classList.add('ativo');
+} else {
+bolinha.classList.remove('ativo');
+}
+});
+
+// Atualiza o texto e a descrição do jogo atual
+const jogoAtual = listaDeJogos[indexAtual];
+tituloEl.innerText = jogoAtual.nome;
+descricaoEl.innerText = jogoAtual.descricao;
+}
+
+function mudarSlide(direcao) {
+const totalJogos = listaDeJogos.length;
+indexAtual = (indexAtual + direcao + totalJogos) % totalJogos;
+atualizarTela();
+}
+
+function irParaSlide(index) {
+indexAtual = index;
+atualizarTela();
+}
+
+function iniciarJogo() {
+const jogoAtual = listaDeJogos[indexAtual];
+window.location.href = jogoAtual.link;
+}
+
+document.addEventListener("DOMContentLoaded", montarTelaJogo);
+</script>
+</body>
+</html>
