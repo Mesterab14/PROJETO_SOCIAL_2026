@@ -14,9 +14,6 @@
     />
 
     <style>
-      /* ----------------------------------
-       RESET E ESTILOS GERAIS
-    ---------------------------------- */
       * {
         margin: 0;
         padding: 0;
@@ -33,51 +30,51 @@
           sans-serif;
         overflow-x: hidden;
       }
-/* Ajuste na Navbar para empurrar o botão para a direita */
-.navbar {
-  justify-content: space-between; /* Distribui os itens mantendo o botão à direita */
-}
+      /* Ajuste na Navbar para empurrar o botão para a direita */
+      .navbar {
+        justify-content: space-between; /* Distribui os itens mantendo o botão à direita */
+      }
 
-/* Estilo do Botão Entrar */
-.btn-login {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: transparent;
-  color: #e685ca; /* Rosa neon */
-  border: 2px solid #e685ca;
-  border-radius: 12px; /* Cantos arredondados */
-  padding: 8px 18px;
-  font-family: "Baloo 2", cursive;
-  font-size: 16px;
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+      /* Estilo do Botão Entrar */
+      .btn-login {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background-color: transparent;
+        color: #e685ca; /* Rosa neon */
+        border: 2px solid #e685ca;
+        border-radius: 12px; /* Cantos arredondados */
+        padding: 8px 18px;
+        font-family: "Baloo 2", cursive;
+        font-size: 16px;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
 
-.btn-login:hover {
-  background-color: rgba(230, 133, 202, 0.15);
-  box-shadow: 0 0 12px rgba(230, 133, 202, 0.4);
-  color: #ffffff;
-  border-color: #ffffff;
-}
+      .btn-login:hover {
+        background-color: rgba(230, 133, 202, 0.15);
+        box-shadow: 0 0 12px rgba(230, 133, 202, 0.4);
+        color: #ffffff;
+        border-color: #ffffff;
+      }
 
-.btn-login svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
-}
+      .btn-login svg {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+      }
       /* ----------------------------------
        1. NAV BAR (MENU SUPERIOR)
     ---------------------------------- */
       .navbar {
         width: 100%;
-        padding: 15px 60px;
-        display: flex;
+        padding: 15px 30px;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
         align-items: center;
-        justify-content: center;
-        gap: 40px;
+        gap: 20px;
         position: fixed;
         top: 0;
         left: 0;
@@ -117,54 +114,96 @@
         gap: 5px;
       }
 
+      .navbar-links {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .navbar-links-left {
+        justify-content: flex-end;
+      }
+
+      .navbar-links-right {
+        justify-content: flex-start;
+      }
+
       .logo img {
         width: 80px;
         height: auto;
       }
 
-/* Container que alinha perfeitamente com o botão original */
-.user-dropdown-container {
-position: relative;
-display: inline-flex;
-align-items: center;
-}
+      @media (max-width: 850px) {
+        .navbar {
+          padding: 10px 12px;
+          gap: 8px;
+        }
 
-/* Submenu posicionamento exato */
-.dropdown-menu {
-display: none;
-position: absolute;
-top: 100%;
-left: 0;
-width: 100%; /* Força ter exatamente a mesma largura do botão Entrar */
-padding-top: 6px;
-z-index: 1000;
-}
+        .navbar-links {
+          gap: 8px;
+        }
 
-.user-dropdown-container:hover .dropdown-menu {
-display: block;
-}
+        .navbar a {
+          font-size: 14px;
+          letter-spacing: 0;
+        }
 
-/* Botão Sair mais delicado e proporcional */
-.dropdown-item {
-width: 100%;
-background-color: #140f2b;
-border: 1.5px solid #e685ca;
-color: #e685ca;
-font-family: inherit;
-font-size: 0.8rem;
-padding: 6px 10px;
-border-radius: 12px;
-cursor: pointer;
-text-align: center;
-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-transition: all 0.2s ease;
-}
+        .logo img {
+          width: 64px;
+        }
 
-.dropdown-item:hover {
-background-color: #e685ca;
-color: #140f2b;
-box-shadow: 0 0 10px rgba(230, 133, 202, 0.4);
-}
+        .btn-login {
+          padding: 6px 10px;
+          font-size: 14px;
+        }
+      }
+
+      /* Container que alinha perfeitamente com o botão original */
+      .user-dropdown-container {
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: inline-flex;
+        align-items: center;
+      }
+
+      /* Submenu posicionamento exato */
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%; /* Força ter exatamente a mesma largura do botão Entrar */
+        padding-top: 6px;
+        z-index: 1000;
+      }
+
+      .user-dropdown-container:hover .dropdown-menu {
+        display: block;
+      }
+
+      /* Botão Sair mais delicado e proporcional */
+      .dropdown-item {
+        width: 100%;
+        background-color: #140f2b;
+        border: 1.5px solid #e685ca;
+        color: #e685ca;
+        font-family: inherit;
+        font-size: 0.8rem;
+        padding: 6px 10px;
+        border-radius: 12px;
+        cursor: pointer;
+        text-align: center;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        transition: all 0.2s ease;
+      }
+
+      .dropdown-item:hover {
+        background-color: #e685ca;
+        color: #140f2b;
+        box-shadow: 0 0 10px rgba(230, 133, 202, 0.4);
+      }
 
       /* ----------------------------------
        2. ÁREA DO GIF EM TELA CHEIA (HERO)
@@ -689,63 +728,62 @@ box-shadow: 0 0 10px rgba(230, 133, 202, 0.4);
       }
 
       /* SEÇÃO SOBRE */
-.about-section {
-width: 90%;
-max-width: 900px;
-margin: 40px auto;
-text-align: center;
-}
+      .about-section {
+        width: 90%;
+        max-width: 900px;
+        margin: 40px auto;
+        text-align: center;
+      }
 
-.about-title {
-font-family: 'Press Start 2P', cursive;
-color: var(--cyan-detail);
-font-size: 1.6rem;
-margin-bottom: 25px;
-text-shadow: 2px 2px var(--main-purple);
-}
+      .about-title {
+        font-family: "Press Start 2P", cursive;
+        color: var(--cyan-detail);
+        font-size: 1.6rem;
+        margin-bottom: 25px;
+        text-shadow: 2px 2px var(--main-purple);
+      }
 
-.about-box {
-background: rgba(29, 31, 90, 0.85);
-border: 3px solid var(--secondary-purple);
-border-radius: 15px;
-padding: 35px;
-box-shadow: 0 0 20px rgba(91, 210, 244, 0.2);
-}
+      .about-box {
+        background: rgba(29, 31, 90, 0.85);
+        border: 3px solid var(--secondary-purple);
+        border-radius: 15px;
+        padding: 35px;
+        box-shadow: 0 0 20px rgba(91, 210, 244, 0.2);
+      }
 
-.about-text {
-font-size: 1.4rem;
-line-height: 1.6;
-color: #e2e8f0;
-}
+      .about-text {
+        font-size: 1.4rem;
+        line-height: 1.6;
+        color: #e2e8f0;
+      }
 
-.about-text strong {
-color: var(--cyan-detail);
-}
+      .about-text strong {
+        color: var(--cyan-detail);
+      }
 
-/* ESTILO EXCLUSIVO PARA A OPÇÃO C (LISTA) */
-.about-list {
-list-style: none;
-text-align: left;
-display: flex;
-flex-direction: column;
-gap: 15px;
-}
+      /* ESTILO EXCLUSIVO PARA A OPÇÃO C (LISTA) */
+      .about-list {
+        list-style: none;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
 
-.about-list li {
-font-size: 1.3rem;
-line-height: 1.5;
-color: #e2e8f0;
-}
+      .about-list li {
+        font-size: 1.3rem;
+        line-height: 1.5;
+        color: #e2e8f0;
+      }
 
-.about-list strong {
-color: var(--cyan-detail);
-}
-
+      .about-list strong {
+        color: var(--cyan-detail);
+      }
 
       /* RECURSOS */
       .resources-wrapper {
-        width: 100vw;
-        margin-left: calc(-50vw + 50%);
+        width: 100%;
+        margin-left: 0;
         position: relative;
         border-top: 1px solid #1c1538;
         border-bottom: 1px solid #1c1538;
@@ -817,10 +855,10 @@ color: var(--cyan-detail);
         border: 1px solid #1c1538;
         border-radius: 16px;
         padding: 32px 24px;
-        text-align: left;
+        text-align: center;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         transition:
           transform 0.2s,
           border-color 0.2s,
@@ -938,459 +976,487 @@ color: var(--cyan-detail);
       .footer-bottom .heart {
         color: #e685ca;
       }
-/* CARROSSEL DE COLABORADORES */
-    .carrossel-colaboradores{
-    overflow:cover;
-}
+      /* CARROSSEL DE COLABORADORES */
+      .carrossel-colaboradores {
+        overflow: cover;
+      }
 
-    .track{
-    display:flex;
-    width:max-content;
-    gap:25px;
+      .track {
+        display: flex;
+        width: max-content;
+        gap: 25px;
 
-    animation: deslizar 17s linear infinite;
+        animation: deslizar 17s linear infinite;
 
-    display:flex;
-    align-items:center;
+        display: flex;
+        align-items: center;
+      }
 
-}
+      /* Exibição dos Nomes */
+      .card {
+        width: 220px;
+        text-align: center;
+        transition: 0.5s;
+      }
 
-/* Exibição dos Nomes */
- .card{
-    width:220px;
-    text-align:center;
-    transition:.5s;
-}
+      .card img {
+        transform-origin: center center;
+        transition: transform 0.35s ease;
 
-.card img{
-    transform-origin: center center;
-    transition: transform .35s ease;
+        width: 90px;
+        height: 90px;
 
-    width: 90px;
-    height: 90px;;
+        border-radius: 50%;
+        object-fit: cover;
+      }
 
-    border-radius:50%;
-    object-fit:cover;
-}
+      .card h3 {
+        max-width: 200px;
+        text-align: center;
+        font-size: 16px;
+        line-height: 1.5;
+        margin-top: 24px;
+        color: rgb(255, 255, 255);
 
-.card h3{
-    max-width:200px;
-    text-align:center;
-    font-size:16px;
-    line-height:1.5;
-    margin-top:24px;
-    color:rgb(255, 255, 255);
+        opacity: 0;
+        transform: translateY(-12px);
 
-    opacity:0;
-    transform:translateY(-12px);
+        transition: 0.5s;
+      }
 
-    transition:.5s;
-}
+      .card:hover img {
+        transform: translateY(-4px) scale(1.5);
+      }
 
-.card:hover img{
-    transform:translateY(-4px) scale(1.5);
-}
+      .card:hover h3 {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-.card:hover h3{
-    opacity:1;
-    transform:translateY(0);
-}
+      /* Animação do carrossel dos colaboradores */
+      @keyframes deslizar {
+        from {
+          transform: translateX(0);
+        }
 
- /* Animação do carrossel dos colaboradores */
-    @keyframes deslizar{
-
-        from{
-        transform:translateX(0);
-    }
-
-        to{
-        transform:translateX(-50%);
-    }
-
-}
-    .track:hover{
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      .track:hover {
         animation-play-state: paused;
-}
-    /* JOGAR */
-    /* RESET & VARIÁVEIS DE COR */
-:root {
---cyan-detail: #91D2F4;
---secondary-purple: #CBA2EA;
---main-purple: #3F3381;
---dark-purple: #1D1F5A;
---bg-dark: #0d0e29;
-}
+      }
+      /* JOGAR */
+      /* RESET & VARIÁVEIS DE COR */
+      :root {
+        --cyan-detail: #91d2f4;
+        --secondary-purple: #cba2ea;
+        --main-purple: #3f3381;
+        --dark-purple: #1d1f5a;
+        --bg-dark: #0d0e29;
+      }
 
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-/* BASE DO SITE */
-body {
-background-color: var(--bg-dark);
-color: #ffffff;
-font-family: 'VT323', monospace;
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-align-items: center;
-position: relative;
-overflow-x: hidden;
-}
+      /* BASE DO SITE */
+      body {
+        background-color: var(--bg-dark);
+        color: #ffffff;
+        font-family: "VT323", monospace;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        overflow-x: hidden;
+      }
 
-/* 🌟 IMAGEM DE FUNDO RETRO COM BAIXA OPACIDADE */
-body::before {
-content: "";
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-/* Imagem synthwave/pixel art de fundo */
-background-image: url('https://i.pinimg.com/originals/a7/53/a1/a753a1d7a63ceebebd970643b59f2cde.gif');
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-opacity: 0.15; /* Opacidade baixa perfeita */
-z-index: -1; /* Fica no fundo de tudo */
-filter: blur(2px); /* Desfoque bem suave */
-}
-/* 1. HEADER HERO */
-.hero-header {
-text-align: center;
-padding: 50px 20px 20px;
-}
+      /* 🌟 IMAGEM DE FUNDO RETRO COM BAIXA OPACIDADE */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* Imagem synthwave/pixel art de fundo */
+        background-image: url("https://i.pinimg.com/originals/a7/53/a1/a753a1d7a63ceebebd970643b59f2cde.gif");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.15; /* Opacidade baixa perfeita */
+        z-index: -1; /* Fica no fundo de tudo */
+        filter: blur(2px); /* Desfoque bem suave */
+      }
+      /* 1. HEADER HERO */
+      .hero-header {
+        text-align: center;
+        padding: 50px 20px 20px;
+      }
 
-.sub-title {
-color: var(--cyan-detail);
-font-size: 1.2rem;
-letter-spacing: 2px;
-}
+      .sub-title {
+        color: var(--cyan-detail);
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+      }
 
-.glitch-title {
-font-family: 'Press Start 2P', cursive;
-font-size: 3.5rem;
-color: #fff;
-text-shadow: 
-3px 3px 0px var(--main-purple),
--3px -3px 0px var(--secondary-purple),
-0 0 15px var(--cyan-detail);
-margin: 15px 0;
-animation: pulseGlow 2s infinite alternate;
-}
+      .glitch-title {
+        font-family: "Press Start 2P", cursive;
+        font-size: 3.5rem;
+        color: #fff;
+        text-shadow:
+          3px 3px 0px var(--main-purple),
+          -3px -3px 0px var(--secondary-purple),
+          0 0 15px var(--cyan-detail);
+        margin: 15px 0;
+        animation: pulseGlow 2s infinite alternate;
+      }
 
-@keyframes pulseGlow {
-from { text-shadow: 3px 3px 0px var(--main-purple), -3px -3px 0px var(--secondary-purple), 0 0 10px var(--cyan-detail); }
-to { text-shadow: 3px 3px 0px var(--main-purple), -3px -3px 0px var(--secondary-purple), 0 0 25px var(--cyan-detail); }
-}
+      @keyframes pulseGlow {
+        from {
+          text-shadow:
+            3px 3px 0px var(--main-purple),
+            -3px -3px 0px var(--secondary-purple),
+            0 0 10px var(--cyan-detail);
+        }
+        to {
+          text-shadow:
+            3px 3px 0px var(--main-purple),
+            -3px -3px 0px var(--secondary-purple),
+            0 0 25px var(--cyan-detail);
+        }
+      }
 
-.pointer {
-color: var(--cyan-detail);
-font-size: 1.5rem;
-margin-bottom: 5px;
-}
+      .pointer {
+        color: var(--cyan-detail);
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+      }
 
-.hero-tags {
-color: var(--cyan-detail);
-letter-spacing: 4px;
-font-size: 1.1rem;
-}
+      .hero-tags {
+        color: var(--cyan-detail);
+        letter-spacing: 4px;
+        font-size: 1.1rem;
+      }
 
-/* 2. TV RETRO CONTAINER */
-.tv-container {
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 30px;
-margin: 20px 0;
-width: 98%;
-max-width: 1400px; /* <--- Deixa a estrutura expandir quase a tela toda */
-}
+      /* 2. TV RETRO CONTAINER */
+      .tv-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        margin: 20px 0;
+        width: 98%;
+        max-width: 1400px; /* <--- Deixa a estrutura expandir quase a tela toda */
+      }
 
-/* ESTRUTURA DA TV */
-.crt-tv {
-background: #23254d;
-border: 5px solid var(--main-purple);
-border-radius: 30px;
-padding: 35px; /* bordas da TV bem marcadas */
-box-shadow: 
-0 0 50px rgba(91, 210, 244, 0.25),
-inset 0 0 20px rgba(0, 0, 0, 0.9);
-width: 100%;
-max-width: 1100px; /* <--- Aumentado bastante! */
-}
+      /* ESTRUTURA DA TV */
+      .crt-tv {
+        background: #23254d;
+        border: 5px solid var(--main-purple);
+        border-radius: 30px;
+        padding: 35px; /* bordas da TV bem marcadas */
+        box-shadow:
+          0 0 50px rgba(91, 210, 244, 0.25),
+          inset 0 0 20px rgba(0, 0, 0, 0.9);
+        width: 100%;
+        max-width: 1100px; /* <--- Aumentado bastante! */
+      }
 
-.screen-wrapper {
-background: #000;
-border-radius: 15px;
-padding: 10px;
-border: 3px solid #141533;
-}
+      .screen-wrapper {
+        background: #000;
+        border-radius: 15px;
+        padding: 10px;
+        border: 3px solid #141533;
+      }
 
-/* TELA CRT COM SCANLINES */
-.crt-screen {
-background-color: #0b0c10;
-background-size: cover;
-background-position: center;
-border-radius: 15px;
-padding: 80px 40px; /* Espaço gigante por dentro */
-text-align: center;
-position: relative;
-overflow: hidden;
-min-height: 520px; /* <--- Deixa a tela BEM alta e imponente */
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-transition: background-image 0.4s ease-in-out;
-}
+      /* TELA CRT COM SCANLINES */
+      .crt-screen {
+        background-color: #0b0c10;
+        background-size: cover;
+        background-position: center;
+        border-radius: 15px;
+        padding: 80px 40px; /* Espaço gigante por dentro */
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        min-height: 520px; /* <--- Deixa a tela BEM alta e imponente */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: background-image 0.4s ease-in-out;
+      }
 
-/* Efeito Visual de TV antiga (Linhas de Varredura) */
-.crt-screen::before {
-content: " ";
-display: block;
-position: absolute;
-top: 0; left: 0; bottom: 0; right: 0;
-background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
-background-size: 100% 4px;
-z-index: 2;
-pointer-events: none;
-}
+      /* Efeito Visual de TV antiga (Linhas de Varredura) */
+      .crt-screen::before {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(
+          rgba(18, 16, 16, 0) 50%,
+          rgba(0, 0, 0, 0.25) 50%
+        );
+        background-size: 100% 4px;
+        z-index: 2;
+        pointer-events: none;
+      }
 
-.game-badge {
-border: 1px solid var(--cyan-detail);
-color: var(--cyan-detail);
-padding: 6px 18px;
-border-radius: 20px;
-font-size: 1.2rem;
-letter-spacing: 2px;
-margin-bottom: 25px;
-z-index: 3;
-}
+      .game-badge {
+        border: 1px solid var(--cyan-detail);
+        color: var(--cyan-detail);
+        padding: 6px 18px;
+        border-radius: 20px;
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+        margin-bottom: 25px;
+        z-index: 3;
+      }
 
-.game-title {
-font-family: 'Press Start 2P', cursive;
-font-size: 2.3rem;
-color: #fff;
-text-shadow: 2px 2px var(--secondary-purple);
-margin-bottom: 25px;
-z-index: 3;
-}
+      .game-title {
+        font-family: "Press Start 2P", cursive;
+        font-size: 2.3rem;
+        color: #fff;
+        text-shadow: 2px 2px var(--secondary-purple);
+        margin-bottom: 25px;
+        z-index: 3;
+      }
 
-.game-description {
-font-size: 1.6rem;
-color: #d1d5db;
-max-width: 70%;
-margin-bottom: 35px;
-z-index: 3;
-}
+      .game-description {
+        font-size: 1.6rem;
+        color: #d1d5db;
+        max-width: 70%;
+        margin-bottom: 35px;
+        z-index: 3;
+      }
 
-/* BOTAO JOGAR AGORA */
-.play-btn {
-background: var(--secondary-purple);
-color: var(--dark-purple);
-text-decoration: none;
-font-family: 'Press Start 2P', cursive;
-font-size: 1.1rem;
-padding: 18px 36px;
-border-radius: 8px;
-border: 2px solid var(--cyan-detail);
-box-shadow: 0 4px 0px var(--main-purple);
-transition: all 0.2s;
-z-index: 3;
-}
+      /* BOTAO JOGAR AGORA */
+      .play-btn {
+        background: var(--secondary-purple);
+        color: var(--dark-purple);
+        text-decoration: none;
+        font-family: "Press Start 2P", cursive;
+        font-size: 1.1rem;
+        padding: 18px 36px;
+        border-radius: 8px;
+        border: 2px solid var(--cyan-detail);
+        box-shadow: 0 4px 0px var(--main-purple);
+        transition: all 0.2s;
+        z-index: 3;
+      }
 
-.play-btn:hover {
-background: var(--cyan-detail);
-transform: scale(1.05);
-}
+      .play-btn:hover {
+        background: var(--cyan-detail);
+        transform: scale(1.05);
+      }
 
-/* Painel de LEDs da TV */
-.tv-controls {
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-top: 15px;
-padding: 0 10px;
-}
+      /* Painel de LEDs da TV */
+      .tv-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15px;
+        padding: 0 10px;
+      }
 
-.brand {
-font-family: 'Press Start 2P', cursive;
-font-size: 0.6rem;
-color: var(--main-purple);
-}
+      .brand {
+        font-family: "Press Start 2P", cursive;
+        font-size: 0.6rem;
+        color: var(--main-purple);
+      }
 
-.led-lights {
-display: flex;
-gap: 8px;
-}
+      .led-lights {
+        display: flex;
+        gap: 8px;
+      }
 
-.led {
-width: 10px;
-height: 10px;
-border-radius: 50%;
-}
+      .led {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
 
-.led.purple { background-color: var(--main-purple); box-shadow: 0 0 5px var(--main-purple); }
-.led.magenta { background-color: var(--secondary-purple); box-shadow: 0 0 5px var(--secondary-purple); }
-.led.cyan { background-color: var(--cyan-detail); box-shadow: 0 0 5px var(--cyan-detail); }
+      .led.purple {
+        background-color: var(--main-purple);
+        box-shadow: 0 0 5px var(--main-purple);
+      }
+      .led.magenta {
+        background-color: var(--secondary-purple);
+        box-shadow: 0 0 5px var(--secondary-purple);
+      }
+      .led.cyan {
+        background-color: var(--cyan-detail);
+        box-shadow: 0 0 5px var(--cyan-detail);
+      }
 
-/* DOTS DA NAVEGAÇÃO */
-.dots-container {
-display: flex;
-gap: 10px;
-margin-bottom: 40px;
-}
+      /* DOTS DA NAVEGAÇÃO */
+      .dots-container {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 40px;
+      }
 
-.dot {
-width: 12px;
-height: 12px;
-background-color: var(--main-purple);
-border-radius: 50%;
-cursor: pointer;
-transition: all 0.3s;
-}
+      .dot {
+        width: 12px;
+        height: 12px;
+        background-color: var(--main-purple);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
 
-.dot.active {
-background-color: var(--cyan-detail);
-box-shadow: 0 0 8px var(--cyan-detail);
-transform: scale(1.2);
-}
+      .dot.active {
+        background-color: var(--cyan-detail);
+        box-shadow: 0 0 8px var(--cyan-detail);
+        transform: scale(1.2);
+      }
 
-/* 3. FOOTER */
-footer {
-width: 100%;
-background-color: #08081a;
-border-top: 2px solid var(--main-purple);
-padding: 30px 20px 10px;
-margin-top: auto;
-}
+      /* 3. FOOTER */
+      footer {
+        width: 100%;
+        background-color: #08081a;
+        border-top: 2px solid var(--main-purple);
+        padding: 30px 20px 10px;
+        margin-top: auto;
+      }
 
-.footer-content {
-max-width: 900px;
-margin: 0 auto;
-display: flex;
-justify-content: space-between;
-flex-wrap: wrap;
-gap: 20px;
-}
+      .footer-content {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
 
-.footer-brand h3 {
-font-family: 'Press Start 2P', cursive;
-color: var(--cyan-detail);
-margin-bottom: 10px;
-}
+      .footer-brand h3 {
+        font-family: "Press Start 2P", cursive;
+        color: var(--cyan-detail);
+        margin-bottom: 10px;
+      }
 
-.footer-brand p {
-color: #8a8fb5;
-font-size: 1.1rem;
-}
+      .footer-brand p {
+        color: #8a8fb5;
+        font-size: 1.1rem;
+      }
 
-.footer-links h4, .footer-social h4 {
-color: var(--secondary-purple);
-margin-bottom: 8px;
-font-size: 1.2rem;
-}
+      .footer-links h4,
+      .footer-social h4 {
+        color: var(--secondary-purple);
+        margin-bottom: 8px;
+        font-size: 1.2rem;
+      }
 
-.footer-links ul, .footer-social ul {
-list-style: none;
-}
+      .footer-links ul,
+      .footer-social ul {
+        list-style: none;
+      }
 
-.footer-links a, .footer-social a {
-color: #8a8fb5;
-text-decoration: none;
-font-size: 1.1rem;
-}
+      .footer-links a,
+      .footer-social a {
+        color: #8a8fb5;
+        text-decoration: none;
+        font-size: 1.1rem;
+      }
 
-.footer-links a:hover, .footer-social a:hover {
-color: var(--cyan-detail);
-}
+      .footer-links a:hover,
+      .footer-social a:hover {
+        color: var(--cyan-detail);
+      }
 
-.footer-bottom {
-text-align: center;
-margin-top: 30px;
-padding-top: 15px;
-border-top: 1px solid rgba(255, 255, 255, 0.05);
-color: #5d6288;
-font-size: 1rem;
-}
+      .footer-bottom {
+        text-align: center;
+        margin-top: 30px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        color: #5d6288;
+        font-size: 1rem;
+      }
     </style>
   </head>
   <body>
     <header>
       <nav class="navbar">
-        <a href="#ranking">Ranking</a>
-        <a href="#sobre">Sobre</a>
+        <div class="navbar-links navbar-links-left">
+          <a href="#ranking">Ranking</a>
+          <a href="#sobre">Sobre</a>
+        </div>
 
         <div class="logo">
           <img src="qmath.png" alt="Logo do Projeto Social" />
         </div>
 
-        <a href="#apoie">Apoie</a>
-        <a href="#colaboradores">Colaboradores</a>
-        <!-- Botão Entrar com Dropdown Logout -->
-<div class="user-dropdown-container">
-<a href="CadLog.html" class="btn-login">
-<svg viewBox="0 0 24 24">
-<path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-</svg>
-Entrar
-</a>
-<div class="dropdown-menu">
-<button id="logout-btn" class="dropdown-item">Sair</button>
-</div>
-</div>
-</nav>
-</header>
-<main class="tv-container">
+        <div class="navbar-links navbar-links-right">
+          <a href="#apoie">Apoie</a>
+          <a href="#colaboradores">Colaboradores</a>
+          <!-- Botão Entrar com Dropdown Logout -->
+          <div class="user-dropdown-container">
+            <a href="CadLog.html" class="btn-login">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                />
+              </svg>
+              Bem Vindo!
+            </a>
+            <div class="dropdown-menu">
+              <button id="logout-btn" class="dropdown-item">Sair</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="tv-container">
+      <div class="crt-tv">
+        <div class="screen-wrapper">
+          <div class="crt-screen" id="crtScreen">
+            <div class="game-badge" id="gameCategory">ADVENTURE</div>
+            <h2 class="game-title" id="gameTitle">Cyber Adventure</h2>
+            <p class="game-description" id="gameDesc">
+              Explore um mundo cyberpunk cheio de mistérios e perigos ocultos.
+            </p>
 
-<div class="crt-tv">
-<div class="screen-wrapper">
-<div class="crt-screen" id="crtScreen">
+            <a href="#" class="play-btn" id="gameLink" target="_blank">
+              <span class="icon"></span> JOGAR AGORA
+            </a>
+          </div>
+        </div>
 
-<div class="game-badge" id="gameCategory">ADVENTURE</div>
-<h2 class="game-title" id="gameTitle">Cyber Adventure</h2>
-<p class="game-description" id="gameDesc">
-Explore um mundo cyberpunk cheio de mistérios e perigos ocultos.
-</p>
+        <div class="tv-controls">
+          <div class="brand">RETRO-3000</div>
+          <div class="led-lights">
+            <span class="led purple"></span>
+            <span class="led magenta"></span>
+            <span class="led cyan"></span>
+          </div>
+        </div>
+      </div>
+    </main>
 
-<a href="#" class="play-btn" id="gameLink" target="_blank">
-<span class="icon"></span> JOGAR AGORA
-</a>
+    <div class="dots-container" id="dotsContainer"></div>
 
-</div>
-</div>
-
-<div class="tv-controls">
-<div class="brand">RETRO-3000</div>
-<div class="led-lights">
-<span class="led purple"></span>
-<span class="led magenta"></span>
-<span class="led cyan"></span>
-</div>
-</div>
-</div>
-
-</main>
-
-<div class="dots-container" id="dotsContainer"></div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
     <main>
       <section id="sobre" class="about-section">
-<div class="about-box">
-<h2 class="about-title">APRENDER E JOGAR</h2>
-<p class="about-text">
-Desenvolvido por alunos para alunos, o <strong>QMATH</strong> é uma iniciativa social que usa a gamificação 
-para reforçar os estudos de matemática. Através de desafios 
-em formato de games clássicos, provamos que é possível treinar o 
-raciocínio lógico, superar a ansiedade com os números e evoluir na 
-matéria enquanto se diverte.
-</p>
-</div>
-</section>
+        <div class="about-box">
+          <h2 class="about-title">APRENDER E JOGAR</h2>
+          <p class="about-text">
+            Desenvolvido por alunos para alunos, o <strong>QMATH</strong> é uma
+            iniciativa social que usa a gamificação para reforçar os estudos de
+            matemática. Através de desafios em formato de games clássicos,
+            provamos que é possível treinar o raciocínio lógico, superar a
+            ansiedade com os números e evoluir na matéria enquanto se diverte.
+          </p>
+        </div>
+      </section>
 
       <section id="ranking" class="ranking-section">
         <div class="ranking-box">
@@ -1625,322 +1691,535 @@ matéria enquanto se diverte.
           </section>
         </div>
       </section>
-      </main>
-  <!-- Carrossel de Colaboradores -->
- <section class="carrossel-colaboradores" id="colaboradores">
-     
-    <div class="track">
-
+    </main>
+    <!-- Carrossel de Colaboradores -->
+    <section class="carrossel-colaboradores" id="colaboradores">
+      <div class="track">
         <!-- Primeira sequência -->
-       <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/amanda.jpeg" alt="Amanda"/>
-         <h3>Amanda dos Santos Nogueira</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/anaJessica.jpeg" alt="Ana Jessica"/>
-         <h3>Ana Jessica de Lima Cavalcante</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/anaJulha.jpeg" alt="Ana Julia"/>
-         <h3>Ana Julia de Lima Cavalcante</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/almir.jpeg" alt="Almir"/>
-         <h3>Antonio Almir Azevedo Sousa Filho</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/bruna.jpeg" alt="Bruna"/>
-         <h3>Bruna Sofia Fernandes Vieira</h3>
-         </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/caique.jpeg" alt="Caique"/>
-         <h3>Caique Bacelar de Lima Calvacante</h3>
-         </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/davila.jpeg" alt="Davila"/>
-         <h3>Davila Maria Barbosa da Cruz</h3>
-         </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/davyd.jpeg" alt="Davyd"/>
-         <h3>Davyd Keven Oliveira Marinho</h3>
-         </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/eliel.jpeg" alt="Eliel"/>
-         <h3>Eliel Andrade Freitas Silva</h3>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/amanda.jpeg"
+            alt="Amanda"
+          />
+          <h3>Amanda dos Santos Nogueira</h3>
         </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/eric.jpeg" alt="Eric"/>
-         <h3>Eric da Silva Lima</h3>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/anaJessica.jpeg"
+            alt="Ana Jessica"
+          />
+          <h3>Ana Jessica de Lima Cavalcante</h3>
         </div>
-    <div class="card">
-        <img src="" alt="Ezequiel"/>
-         <h3>Ezequiel de Lima Brandão</h3>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/anaJulha.jpeg"
+            alt="Ana Julia"
+          />
+          <h3>Ana Julia de Lima Cavalcante</h3>
         </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/gabriel%20henrrique.jpeg" alt="Gabriel Henrique"/>
-         <h3>Gabriel Henrique Fernandes Albuquerque da Silva</h3>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/almir.jpeg"
+            alt="Almir"
+          />
+          <h3>Antonio Almir Azevedo Sousa Filho</h3>
         </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/gabrielRodriguesDOvale.jpeg" alt="Gabriel Rodrigues do Vale"/>
-         <h3>Gabriel Rodrigues do Vale</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/guilhermeSousa.jpeg" alt="Guilherme Sousa"/>
-         <h3>Guilherme Sousa de Freitas</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/isaac.jpeg" alt="Isaac"/>
-         <h3>Isaac Pontes de Farias</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/isacHayson.jpeg" alt="Isac Hayson"/>
-         <h3>Isac Hayson da Silva Alves</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/jennifer.jpeg" alt="Jennifer"/>
-         <h3>Jennifer Lopes da Silva Alves</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoGabriel.jpeg" alt="João Gabriel"/>
-         <h3>João Gabriel Oliveira Silva</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoLucasMoura.jpeg" alt="João Lucas de Moura Fernandes"/>
-         <h3>João Lucas de Moura Fernandes</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoLucasRodriguesV2.jpeg" alt="João Lucas Rodrigues"/>
-         <h3>João Lucas Rodrigues Melo</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoMarco.jpeg" alt="João Marco"/>
-         <h3>João Marco Duarte de Sousa</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoPedroFelix.jpeg" alt="João Pedro Felix"/>
-         <h3>João Pedro Felix de Alcantra</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoVitor.jpeg" alt="João Vitor"/>
-         <h3>João Vitor Rodrigues de Almeida</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joseGabriel.jpeg" alt="José Gabriel"/>
-         <h3>José Gabriel Silva Abreu</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joseRyan.jpeg" alt="José Ryan"/>
-         <h3>José Ryan Bernado Ribeiro</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/kadu.jpeg" alt="Kadu"/>
-         <h3>Kadu Emanuel Correia Almeida</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/luizGuilherme.jpeg" alt="Luis Guilherme"/>
-         <h3>Luis Guilherme Teixeira Rodrigues</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/luizFernandoCamara.jpeg" alt="Luis Fernando Camara"/>
-         <h3>Luis Fernando Camara Lemos</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/luizFernandoMendes.jpeg" alt="Luis Fernando Mendes"/>
-         <h3>Luis Fernando Mendes de Macedo</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/marcelo.jpeg" alt="Marcelo"/>
-         <h3>Marcelo Gouveia Morais</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/mariaEster.jpeg" alt="Maria Ester"/>
-         <h3>Maria Ester Alves Bezerra</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/mariaMeire.jpeg" alt="Maria Meire"/>
-         <h3>Maria Meire Candido Avila</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/kaiqueMesquita.jpeg" alt="Kaique Mesquita"/>
-         <h3>Pedro Kaique Mesquita Nogueira</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/pedroSantos.jpeg" alt="Pedro Santos"/>
-         <h3>Pedro Santos Sombra</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/ranara.jpeg" alt="Ranara"/>
-         <h3>Ranara Pereira Souza</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/raynna.jpeg" alt="Raynna"/>
-         <h3>Raynna Ketally Soares Santos</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/renzo.jpeg" alt="Renzo"/>
-         <h3>Renzo Pedro Sousa de Lima</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/roselane.jpeg" alt="Roselane"/>
-         <h3>Roselane de Matos Oliveira</h3>
-    </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/bruna.jpeg"
+            alt="Bruna"
+          />
+          <h3>Bruna Sofia Fernandes Vieira</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/caique.jpeg"
+            alt="Caique"
+          />
+          <h3>Caique Bacelar de Lima Calvacante</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/davila.jpeg"
+            alt="Davila"
+          />
+          <h3>Davila Maria Barbosa da Cruz</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/davyd.jpeg"
+            alt="Davyd"
+          />
+          <h3>Davyd Keven Oliveira Marinho</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/eliel.jpeg"
+            alt="Eliel"
+          />
+          <h3>Eliel Andrade Freitas Silva</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/eric.jpeg"
+            alt="Eric"
+          />
+          <h3>Eric da Silva Lima</h3>
+        </div>
+        <div class="card">
+          <img src="" alt="Ezequiel" />
+          <h3>Ezequiel de Lima Brandão</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/gabriel%20henrrique.jpeg"
+            alt="Gabriel Henrique"
+          />
+          <h3>Gabriel Henrique Fernandes Albuquerque da Silva</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/gabrielRodriguesDOvale.jpeg"
+            alt="Gabriel Rodrigues do Vale"
+          />
+          <h3>Gabriel Rodrigues do Vale</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/guilhermeSousa.jpeg"
+            alt="Guilherme Sousa"
+          />
+          <h3>Guilherme Sousa de Freitas</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/isaac.jpeg"
+            alt="Isaac"
+          />
+          <h3>Isaac Pontes de Farias</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/isacHayson.jpeg"
+            alt="Isac Hayson"
+          />
+          <h3>Isac Hayson da Silva Alves</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/jennifer.jpeg"
+            alt="Jennifer"
+          />
+          <h3>Jennifer Lopes da Silva Alves</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoGabriel.jpeg"
+            alt="João Gabriel"
+          />
+          <h3>João Gabriel Oliveira Silva</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoLucasMoura.jpeg"
+            alt="João Lucas de Moura Fernandes"
+          />
+          <h3>João Lucas de Moura Fernandes</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoLucasRodriguesV2.jpeg"
+            alt="João Lucas Rodrigues"
+          />
+          <h3>João Lucas Rodrigues Melo</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoMarco.jpeg"
+            alt="João Marco"
+          />
+          <h3>João Marco Duarte de Sousa</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoPedroFelix.jpeg"
+            alt="João Pedro Felix"
+          />
+          <h3>João Pedro Felix de Alcantra</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoVitor.jpeg"
+            alt="João Vitor"
+          />
+          <h3>João Vitor Rodrigues de Almeida</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joseGabriel.jpeg"
+            alt="José Gabriel"
+          />
+          <h3>José Gabriel Silva Abreu</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joseRyan.jpeg"
+            alt="José Ryan"
+          />
+          <h3>José Ryan Bernado Ribeiro</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/kadu.jpeg"
+            alt="Kadu"
+          />
+          <h3>Kadu Emanuel Correia Almeida</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/luizGuilherme.jpeg"
+            alt="Luis Guilherme"
+          />
+          <h3>Luis Guilherme Teixeira Rodrigues</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/luizFernandoCamara.jpeg"
+            alt="Luis Fernando Camara"
+          />
+          <h3>Luis Fernando Camara Lemos</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/luizFernandoMendes.jpeg"
+            alt="Luis Fernando Mendes"
+          />
+          <h3>Luis Fernando Mendes de Macedo</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/marcelo.jpeg"
+            alt="Marcelo"
+          />
+          <h3>Marcelo Gouveia Morais</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/mariaEster.jpeg"
+            alt="Maria Ester"
+          />
+          <h3>Maria Ester Alves Bezerra</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/mariaMeire.jpeg"
+            alt="Maria Meire"
+          />
+          <h3>Maria Meire Candido Avila</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/kaiqueMesquita.jpeg"
+            alt="Kaique Mesquita"
+          />
+          <h3>Pedro Kaique Mesquita Nogueira</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/pedroSantos.jpeg"
+            alt="Pedro Santos"
+          />
+          <h3>Pedro Santos Sombra</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/ranara.jpeg"
+            alt="Ranara"
+          />
+          <h3>Ranara Pereira Souza</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/raynna.jpeg"
+            alt="Raynna"
+          />
+          <h3>Raynna Ketally Soares Santos</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/renzo.jpeg"
+            alt="Renzo"
+          />
+          <h3>Renzo Pedro Sousa de Lima</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/roselane.jpeg"
+            alt="Roselane"
+          />
+          <h3>Roselane de Matos Oliveira</h3>
+        </div>
 
         <!-- Segunda sequência (copia) -->
-  <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/amanda.jpeg" alt="Amanda"/>
-         <h3>Amanda dos Santos Nogueira</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/anaJessica.jpeg" alt="Ana Jessica"/>
-         <h3>Ana Jessica de Lima Cavalcante</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/anaJulha.jpeg" alt="Ana Julia"/>
-         <h3>Ana Julia de Lima Cavalcante</h3>
-    </div>
-    <div class="card">
-        <img src="" alt="Almir"/>
-         <h3>Antonio Almir Azevedo Sousa Filho</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/bruna.jpeg" alt="Bruna"/>
-         <h3>Bruna Sofia Fernandes Vieira</h3>
-         </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/caique.jpeg" alt="Caique"/>
-         <h3>Caique Bacelar de Lima Calvacante</h3>
-         </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/davila.jpeg" alt="Davila"/>
-         <h3>Davila Maria Barbosa da Cruz</h3>
-         </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/davyd.jpeg" alt="Davyd"/>
-         <h3>Davyd Keven Oliveira Marinho</h3>
-         </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/eliel.jpeg" alt="Eliel"/>
-         <h3>Eliel Andrade Freitas Silva</h3>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/amanda.jpeg"
+            alt="Amanda"
+          />
+          <h3>Amanda dos Santos Nogueira</h3>
         </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/eric.jpeg" alt="Eric"/>
-         <h3>Eric da Silva Lima</h3>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/anaJessica.jpeg"
+            alt="Ana Jessica"
+          />
+          <h3>Ana Jessica de Lima Cavalcante</h3>
         </div>
-    <div class="card">
-        <img src="" alt="Ezequiel"/>
-         <h3>Ezequiel de Lima Brandão</h3>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/anaJulha.jpeg"
+            alt="Ana Julia"
+          />
+          <h3>Ana Julia de Lima Cavalcante</h3>
         </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/gabriel%20henrrique.jpeg" alt="Gabriel Henrique"/>
-         <h3>Gabriel Henrique Fernandes Albuquerque da Silva</h3>
+        <div class="card">
+          <img src="" alt="Almir" />
+          <h3>Antonio Almir Azevedo Sousa Filho</h3>
         </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/gabrielRodriguesDOvale.jpeg" alt="Gabriel Rodrigues do Vale"/>
-         <h3>Gabriel Rodrigues do Vale</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/guilhermeSousa.jpeg" alt="Guilherme Sousa"/>
-         <h3>Guilherme Sousa de Freitas</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/isaac.jpeg" alt="Isaac"/>
-         <h3>Isaac Pontes de Farias</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/isacHayson.jpeg" alt="Isac Hayson"/>
-         <h3>Isac Hayson da Silva Alves</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/jennifer.jpeg" alt="Jennifer"/>
-         <h3>Jennifer Lopes da Silva Alves</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoGabriel.jpeg" alt="João Gabriel"/>
-         <h3>João Gabriel Oliveira Silva</h3>
-    </div>
-    <div class="card">
-        <img src="" alt="João Lucas de Moura Fernandes"/>
-         <h3>João Lucas de Moura Fernandes</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoLucasRodriguesV2.jpeg" alt="João Lucas Rodrigues"/>
-         <h3>João Lucas Rodrigues Melo</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoMarco.jpeg" alt="João Marco"/>
-         <h3>João Marco Duarte de Sousa</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoPedroFelix.jpeg" alt="João Pedro Felix"/>
-         <h3>João Pedro Felix de Alcantra</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoVitor.jpeg" alt="João Vitor"/>
-         <h3>João Vitor Rodrigues de Almeida</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joseGabriel.jpeg" alt="José Gabriel"/>
-         <h3>José Gabriel Silva Abreu</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joseRyan.jpeg" alt="José Ryan"/>
-         <h3>José Ryan Bernado Ribeiro</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/kadu.jpeg" alt="Kadu"/>
-         <h3>Kadu Emanuel Correia Almeida</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/luizGuilherme.jpeg" alt="Luis Guilherme"/>
-         <h3>Luis Guilherme Teixeira Rodrigues</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/luizFernandoCamara.jpeg" alt="Luis Fernando Camara"/>
-         <h3>Luis Fernando Camara Lemos</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/luizFernandoMendes.jpeg" alt="Luis Fernando Mendes"/>
-         <h3>Luis Fernando Mendes de Macedo</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/marcelo.jpeg" alt="Marcelo"/>
-         <h3>Marcelo Gouveia Morais</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/mariaEster.jpeg" alt="Maria Ester"/>
-         <h3>Maria Ester Alves Bezerra</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/mariaMeire.jpeg" alt="Maria Meire"/>
-         <h3>Maria Meire Candido Avila</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/kaiqueMesquita.jpeg" alt="Kaique Mesquita"/>
-         <h3>Pedro Kaique Mesquita Nogueira</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/pedroSantos.jpeg" alt="Pedro Santos"/>
-         <h3>Pedro Santos Sombra</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/ranara.jpeg" alt="Ranara"/>
-         <h3>Ranara Pereira Souza</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/raynna.jpeg" alt="Raynna"/>
-         <h3>Raynna Ketally Soares Santos</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/renzo.jpeg" alt="Renzo"/>
-         <h3>Renzo Pedro Sousa de Lima</h3>
-    </div>
-    <div class="card">
-        <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/roselane.jpeg" alt="Roselane"/>
-         <h3>Roselane de Matos Oliveira</h3>
-    </div>
-        
-</div>
-  </section>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/bruna.jpeg"
+            alt="Bruna"
+          />
+          <h3>Bruna Sofia Fernandes Vieira</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/caique.jpeg"
+            alt="Caique"
+          />
+          <h3>Caique Bacelar de Lima Calvacante</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/davila.jpeg"
+            alt="Davila"
+          />
+          <h3>Davila Maria Barbosa da Cruz</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/davyd.jpeg"
+            alt="Davyd"
+          />
+          <h3>Davyd Keven Oliveira Marinho</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/eliel.jpeg"
+            alt="Eliel"
+          />
+          <h3>Eliel Andrade Freitas Silva</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/eric.jpeg"
+            alt="Eric"
+          />
+          <h3>Eric da Silva Lima</h3>
+        </div>
+        <div class="card">
+          <img src="" alt="Ezequiel" />
+          <h3>Ezequiel de Lima Brandão</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/gabriel%20henrrique.jpeg"
+            alt="Gabriel Henrique"
+          />
+          <h3>Gabriel Henrique Fernandes Albuquerque da Silva</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/gabrielRodriguesDOvale.jpeg"
+            alt="Gabriel Rodrigues do Vale"
+          />
+          <h3>Gabriel Rodrigues do Vale</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/guilhermeSousa.jpeg"
+            alt="Guilherme Sousa"
+          />
+          <h3>Guilherme Sousa de Freitas</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/isaac.jpeg"
+            alt="Isaac"
+          />
+          <h3>Isaac Pontes de Farias</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/isacHayson.jpeg"
+            alt="Isac Hayson"
+          />
+          <h3>Isac Hayson da Silva Alves</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/jennifer.jpeg"
+            alt="Jennifer"
+          />
+          <h3>Jennifer Lopes da Silva Alves</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoGabriel.jpeg"
+            alt="João Gabriel"
+          />
+          <h3>João Gabriel Oliveira Silva</h3>
+        </div>
+        <div class="card">
+          <img src="" alt="João Lucas de Moura Fernandes" />
+          <h3>João Lucas de Moura Fernandes</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoLucasRodriguesV2.jpeg"
+            alt="João Lucas Rodrigues"
+          />
+          <h3>João Lucas Rodrigues Melo</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoMarco.jpeg"
+            alt="João Marco"
+          />
+          <h3>João Marco Duarte de Sousa</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoPedroFelix.jpeg"
+            alt="João Pedro Felix"
+          />
+          <h3>João Pedro Felix de Alcantra</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoVitor.jpeg"
+            alt="João Vitor"
+          />
+          <h3>João Vitor Rodrigues de Almeida</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joseGabriel.jpeg"
+            alt="José Gabriel"
+          />
+          <h3>José Gabriel Silva Abreu</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joseRyan.jpeg"
+            alt="José Ryan"
+          />
+          <h3>José Ryan Bernado Ribeiro</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/kadu.jpeg"
+            alt="Kadu"
+          />
+          <h3>Kadu Emanuel Correia Almeida</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/luizGuilherme.jpeg"
+            alt="Luis Guilherme"
+          />
+          <h3>Luis Guilherme Teixeira Rodrigues</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/luizFernandoCamara.jpeg"
+            alt="Luis Fernando Camara"
+          />
+          <h3>Luis Fernando Camara Lemos</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/luizFernandoMendes.jpeg"
+            alt="Luis Fernando Mendes"
+          />
+          <h3>Luis Fernando Mendes de Macedo</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/marcelo.jpeg"
+            alt="Marcelo"
+          />
+          <h3>Marcelo Gouveia Morais</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/mariaEster.jpeg"
+            alt="Maria Ester"
+          />
+          <h3>Maria Ester Alves Bezerra</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/mariaMeire.jpeg"
+            alt="Maria Meire"
+          />
+          <h3>Maria Meire Candido Avila</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/kaiqueMesquita.jpeg"
+            alt="Kaique Mesquita"
+          />
+          <h3>Pedro Kaique Mesquita Nogueira</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/pedroSantos.jpeg"
+            alt="Pedro Santos"
+          />
+          <h3>Pedro Santos Sombra</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/ranara.jpeg"
+            alt="Ranara"
+          />
+          <h3>Ranara Pereira Souza</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/raynna.jpeg"
+            alt="Raynna"
+          />
+          <h3>Raynna Ketally Soares Santos</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/renzo.jpeg"
+            alt="Renzo"
+          />
+          <h3>Renzo Pedro Sousa de Lima</h3>
+        </div>
+        <div class="card">
+          <img
+            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/roselane.jpeg"
+            alt="Roselane"
+          />
+          <h3>Roselane de Matos Oliveira</h3>
+        </div>
+      </div>
+    </section>
     <footer class="arcade-footer">
       <div class="footer-container">
         <div class="footer-brand">
@@ -1984,37 +2263,32 @@ matéria enquanto se diverte.
           posicao: "1º",
           nome: "Asuka Renjou",
           pontos: "11.200 pts",
-          avatar:
-            "",
+          avatar: "",
           destaque: true,
         },
         {
           posicao: "2º",
           nome: "Takeru Hoshino",
           pontos: "14.800 pts",
-          avatar:
-            "",
+          avatar: "",
         },
         {
           posicao: "3º",
           nome: "Lyara Veylith",
           pontos: "15.420 pts",
-          avatar:
-            "",
+          avatar: "",
         },
         {
           posicao: "4º",
           nome: "Shiro Kazama",
           pontos: "13.950 pts",
-          avatar:
-            "",
+          avatar: "",
         },
         {
           posicao: "5º",
           nome: "Kaede Kisaragi",
           pontos: "12.100 pts",
-          avatar:
-            "",
+          avatar: "",
         },
       ];
 
