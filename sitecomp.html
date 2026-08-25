@@ -133,18 +133,141 @@
         height: auto;
       }
 
-      @media (max-width: 850px) {
+      .menu-toggle {
+        display: none;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(121, 222, 215, 0.4);
+        background: rgba(20, 15, 43, 0.85);
+        border-radius: 10px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 0;
+      }
+
+      .menu-toggle span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: #79ded7;
+        border-radius: 10px;
+      }
+
+      .mobile-nav-panel {
+        display: none;
+      }
+
+      @media (max-width: 980px) {
         .navbar {
-          padding: 10px 12px;
-          gap: 8px;
+          grid-template-columns: auto 1fr auto;
+          padding: 10px 16px;
+          gap: 12px;
+        }
+
+        .menu-toggle {
+          display: inline-flex;
         }
 
         .navbar-links {
-          gap: 8px;
+          display: none;
+          gap: 10px;
+          flex-wrap: wrap;
+          width: 100%;
+        }
+
+        .navbar.is-open .mobile-nav-panel {
+          display: flex;
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 100%;
+          flex-direction: column;
+          gap: 12px;
+          align-items: stretch;
+          background: rgba(11, 7, 25, 0.97);
+          padding: 12px 16px 16px;
+          border-bottom: 1px solid #1c1538;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.28);
+        }
+
+        .mobile-nav-panel .navbar-links {
+          display: flex;
+          width: 100%;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .mobile-nav-panel .navbar-links-left,
+        .mobile-nav-panel .navbar-links-right {
+          justify-content: flex-start;
+          width: 100%;
+        }
+
+        .mobile-nav-panel .navbar a {
+          width: 100%;
+          display: block;
+          padding: 8px 0;
+          font-size: 15px;
+        }
+
+        .mobile-nav-panel .user-dropdown-container {
+          position: static;
+          transform: none;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+
+        .mobile-nav-panel .btn-login {
+          width: 100%;
+          justify-content: center;
+          padding: 10px 14px;
+          font-size: 15px;
+        }
+
+        .navbar-links-left,
+        .navbar-links-right {
+          justify-content: center;
+        }
+
+        .logo {
+          order: 0;
+        }
+
+        .user-dropdown-container {
+          position: static;
+          transform: none;
+          justify-self: end;
+        }
+
+        .btn-login {
+          padding: 6px 12px;
+          font-size: 14px;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .navbar {
+          grid-template-columns: auto 1fr auto;
+          justify-items: center;
+          padding-top: 12px;
+          padding-bottom: 12px;
+        }
+
+        .navbar-links {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .user-dropdown-container {
+          justify-self: center;
         }
 
         .navbar a {
-          font-size: 14px;
+          font-size: 13px;
           letter-spacing: 0;
         }
 
@@ -152,13 +275,20 @@
           width: 64px;
         }
 
-        .btn-login {
-          padding: 6px 10px;
-          font-size: 14px;
+        .mobile-nav-panel .btn-login {
+          font-size: 0.72rem;
+          padding: 7px 10px;
+          gap: 5px;
+          white-space: nowrap;
+        }
+
+        .mobile-nav-panel .btn-login svg {
+          width: 14px;
+          height: 14px;
         }
       }
 
-      /* Container que alinha perfeitamente com o botão original */
+      /* Container do botão de login */
       .user-dropdown-container {
         position: absolute;
         right: 30px;
@@ -166,43 +296,6 @@
         transform: translateY(-50%);
         display: inline-flex;
         align-items: center;
-      }
-
-      /* Submenu posicionamento exato */
-      .dropdown-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%; /* Força ter exatamente a mesma largura do botão Entrar */
-        padding-top: 6px;
-        z-index: 1000;
-      }
-
-      .user-dropdown-container:hover .dropdown-menu {
-        display: block;
-      }
-
-      /* Botão Sair mais delicado e proporcional */
-      .dropdown-item {
-        width: 100%;
-        background-color: #140f2b;
-        border: 1.5px solid #e685ca;
-        color: #e685ca;
-        font-family: inherit;
-        font-size: 0.8rem;
-        padding: 6px 10px;
-        border-radius: 12px;
-        cursor: pointer;
-        text-align: center;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-        transition: all 0.2s ease;
-      }
-
-      .dropdown-item:hover {
-        background-color: #e685ca;
-        color: #140f2b;
-        box-shadow: 0 0 10px rgba(230, 133, 202, 0.4);
       }
 
       /* ----------------------------------
@@ -478,6 +571,7 @@
 
       .title-gradient {
         background: linear-gradient(90deg, #e685ca, #79ded7);
+        background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         display: inline-block;
@@ -727,6 +821,64 @@
         gap: 4px;
       }
 
+      .pix-modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(11, 7, 25, 0.8);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        z-index: 2000;
+      }
+
+      .pix-modal.show {
+        display: flex;
+      }
+
+      .pix-modal-content {
+        width: min(420px, 100%);
+        background: #140f2b;
+        border: 1px solid #1c1538;
+        border-radius: 18px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        padding: 24px 20px 18px;
+        text-align: center;
+      }
+
+      .pix-modal-content h4 {
+        color: #ffffff;
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+      }
+
+      .pix-modal-content p {
+        color: #a099c4;
+        font-size: 0.82rem;
+        margin-bottom: 18px;
+        line-height: 1.5;
+      }
+
+      .pix-modal-content img {
+        width: min(220px, 70%);
+        height: auto;
+        display: block;
+        margin: 0 auto 18px;
+        border-radius: 12px;
+        background: #ffffff;
+        padding: 10px;
+      }
+
+      .pix-modal-close {
+        background: linear-gradient(135deg, #e685ca, #79ded7);
+        color: #0b0719;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 18px;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
       /* SEÇÃO SOBRE */
       .about-section {
         width: 90%;
@@ -843,9 +995,149 @@
         gap: 24px;
       }
 
-      @media (max-width: 768px) {
+      @media (max-width: 1100px) {
+        .ranking-box {
+          width: min(100%, 920px);
+          height: auto;
+          padding: 26px 18px 22px;
+        }
+
+        .cards-container {
+          flex-wrap: wrap;
+          height: auto;
+          padding: 10px 0;
+        }
+
+        .player-card {
+          width: min(32%, 150px);
+        }
+
+        .player-card.active {
+          width: min(38%, 175px);
+        }
+      }
+
+      @media (max-width: 900px) {
+        .hero-section,
+        .hero-section.active-form {
+          grid-template-columns: 1fr;
+          max-width: 100%;
+        }
+
+        .form-card {
+          width: 100%;
+        }
+
+        .amount-options {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .title-main {
+          font-size: clamp(2rem, 7vw, 3rem);
+        }
+
+        .about-text {
+          font-size: clamp(1rem, 2.8vw, 1.2rem);
+        }
+
         .resources-grid {
           grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .ranking-section {
+          padding: 60px 14px;
+        }
+
+        .ranking-box {
+          border-radius: 18px;
+          padding: 22px 14px;
+        }
+
+        .cards-container {
+          gap: 12px;
+        }
+
+        .player-card,
+        .player-card.active {
+          width: min(45%, 150px);
+        }
+
+        .goal-values {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+        }
+
+        .actions {
+          flex-direction: column;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+          width: 100%;
+        }
+
+        .about-box {
+          padding: 22px 18px;
+        }
+
+        .about-title {
+          font-size: 1.2rem;
+        }
+
+        .footer-container,
+        .footer-content {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .hero-gif-container {
+          height: 60vh;
+        }
+
+        .ranking-title {
+          font-size: 1.2rem;
+        }
+
+        .player-name {
+          font-size: 0.75rem;
+        }
+
+        .player-score {
+          font-size: 0.7rem;
+        }
+
+        .title-main {
+          font-size: 2rem;
+        }
+
+        .description {
+          font-size: 0.85rem;
+        }
+
+        .goal-card,
+        .form-card {
+          padding: 18px 14px;
+        }
+
+        .amount-options {
+          grid-template-columns: 1fr;
+        }
+
+        .tag-badge {
+          font-size: 0.65rem;
+          padding: 5px 12px;
+        }
+
+        .resources-wrapper,
+        .apoie-wrapper {
+          padding-left: 12px;
+          padding-right: 12px;
         }
       }
 
@@ -1238,6 +1530,38 @@
         z-index: 3;
       }
 
+      @media (max-width: 560px) {
+        .crt-screen {
+          padding: 52px 18px;
+          min-height: 360px;
+        }
+
+        .game-badge {
+          font-size: 0.75rem;
+          letter-spacing: 1px;
+          padding: 6px 12px;
+        }
+
+        .game-title {
+          font-size: clamp(1.05rem, 5vw, 1.8rem);
+          line-height: 1.4;
+          max-width: 100%;
+          word-break: break-word;
+        }
+
+        .game-description {
+          font-size: clamp(0.9rem, 3vw, 1.15rem);
+          max-width: 90%;
+          line-height: 1.5;
+        }
+
+        .play-btn {
+          font-size: 0.75rem;
+          padding: 14px 18px;
+          white-space: nowrap;
+        }
+      }
+
       /* BOTAO JOGAR AGORA */
       .play-btn {
         background: var(--secondary-purple);
@@ -1384,10 +1708,21 @@
   </head>
   <body>
     <header>
-      <nav class="navbar">
+      <nav class="navbar" id="mainNavbar">
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
         <div class="navbar-links navbar-links-left">
-          <a href="#ranking">Ranking</a>
           <a href="#sobre">Sobre</a>
+          <a href="#ranking">Ranking</a>
         </div>
 
         <div class="logo">
@@ -1397,18 +1732,84 @@
         <div class="navbar-links navbar-links-right">
           <a href="#apoie">Apoie</a>
           <a href="#colaboradores">Colaboradores</a>
-          <!-- Botão Entrar com Dropdown Logout -->
           <div class="user-dropdown-container">
-            <a href="CadLog.html" class="btn-login">
-              <svg viewBox="0 0 24 24">
+            <a
+              href="CadLog.html"
+              class="btn-login"
+              aria-label="Entrar na conta"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path
-                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                  d="M10 3h8a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M13 12h-9"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M6 7l-5 5 5 5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
                 />
               </svg>
-              Bem Vindo!
+              Sair
             </a>
-            <div class="dropdown-menu">
-              <button id="logout-btn" class="dropdown-item">Sair</button>
+          </div>
+        </div>
+
+        <div class="mobile-nav-panel" id="mobileNavPanel">
+          <div class="navbar-links navbar-links-left">
+            <a href="#ranking">Ranking</a>
+            <a href="#sobre">Sobre</a>
+          </div>
+
+          <div class="navbar-links navbar-links-right">
+            <a href="#apoie">Apoie</a>
+            <a href="#colaboradores">Colaboradores</a>
+            <div class="user-dropdown-container">
+              <a
+                href="CadLog.html"
+                class="btn-login"
+                aria-label="Entrar na conta"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M10 3h8a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-8"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13 12h-9"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M6 7l-5 5 5 5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                Sair
+              </a>
             </div>
           </div>
         </div>
@@ -1418,13 +1819,14 @@
       <div class="crt-tv">
         <div class="screen-wrapper">
           <div class="crt-screen" id="crtScreen">
-            <div class="game-badge" id="gameCategory">ADVENTURE</div>
-            <h2 class="game-title" id="gameTitle">Cyber Adventure</h2>
+            <div class="game-badge" id="gameCategory">APRENDIZADO</div>
+            <h2 class="game-title" id="gameTitle">QMath</h2>
             <p class="game-description" id="gameDesc">
-              Explore um mundo cyberpunk cheio de mistérios e perigos ocultos.
+              Aprenda matemática de forma divertida com a QMath! Clique aqui
+              para começar!
             </p>
 
-            <a href="#" class="play-btn" id="gameLink" target="_blank">
+            <a href="PageGame.html" class="play-btn" id="gameLink">
               <span class="icon"></span> JOGAR AGORA
             </a>
           </div>
@@ -1444,6 +1846,20 @@
     <div class="dots-container" id="dotsContainer"></div>
 
     <script src="script.js"></script>
+    <div class="pix-modal" id="pixModal" aria-hidden="true">
+      <div
+        class="pix-modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="pixModalTitle"
+      >
+        <h4 id="pixModalTitle">QR Code Pix</h4>
+        <p>Obrigado pelo apoio! Use o código abaixo para realizar a doação.</p>
+        <img src="qrcode.jpeg" alt="QR Code Pix" />
+        <button class="pix-modal-close" id="closePixModal">Fechar</button>
+      </div>
+    </div>
+
     <main>
       <section id="sobre" class="about-section">
         <div class="about-box">
@@ -2263,32 +2679,32 @@
           posicao: "1º",
           nome: "Asuka Renjou",
           pontos: "11.200 pts",
-          avatar: "",
+          avatar: "assets/avatars/avatar-1.png",
           destaque: true,
         },
         {
           posicao: "2º",
           nome: "Takeru Hoshino",
           pontos: "14.800 pts",
-          avatar: "",
+          avatar: "assets/avatars/avatar-2.png",
         },
         {
           posicao: "3º",
           nome: "Lyara Veylith",
           pontos: "15.420 pts",
-          avatar: "",
+          avatar: "assets/avatars/avatar-3.png",
         },
         {
           posicao: "4º",
           nome: "Shiro Kazama",
           pontos: "13.950 pts",
-          avatar: "",
+          avatar: "assets/avatars/avatar-4.png",
         },
         {
           posicao: "5º",
           nome: "Kaede Kisaragi",
           pontos: "12.100 pts",
-          avatar: "",
+          avatar: "assets/avatars/avatar-5.png",
         },
       ];
 
@@ -2364,6 +2780,26 @@
         });
       });
 
+      const pixModal = document.getElementById("pixModal");
+      const closePixModal = document.getElementById("closePixModal");
+
+      function openPixModal() {
+        pixModal.classList.add("show");
+        pixModal.setAttribute("aria-hidden", "false");
+      }
+
+      function closePixModalDialog() {
+        pixModal.classList.remove("show");
+        pixModal.setAttribute("aria-hidden", "true");
+      }
+
+      closePixModal.addEventListener("click", closePixModalDialog);
+      pixModal.addEventListener("click", (event) => {
+        if (event.target === pixModal) {
+          closePixModalDialog();
+        }
+      });
+
       document.getElementById("btn-submit").addEventListener("click", () => {
         if (selectedValue <= 0) {
           alert("Por favor, escolha um valor válido para apoiar.");
@@ -2377,9 +2813,7 @@
         totalSupporters += 1;
         updateGoalProgress();
 
-        alert(
-          `Obrigado pelo seu apoio, ${name}!\n\nUm QR Code Pix simulado para o valor de R$ ${selectedValue.toFixed(2)} foi gerado com sucesso.`,
-        );
+        openPixModal();
       });
 
       /* FUNÇÃO PARA REVELAR E ROLAR ATÉ O FORMULÁRIO */
@@ -2402,8 +2836,29 @@
       // Smooth scroll e animação de clique para links no cabeçalho
       (function () {
         const navbar = document.querySelector(".navbar");
+        const menuToggle = document.getElementById("menuToggle");
         const links = document.querySelectorAll('.navbar a[href^="#"]');
         const headerOffset = navbar ? navbar.offsetHeight : 0;
+
+        if (menuToggle) {
+          menuToggle.addEventListener("click", () => {
+            const isOpen = navbar.classList.toggle("is-open");
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+          });
+        }
+
+        document.addEventListener("click", (event) => {
+          if (!navbar) return;
+          if (
+            navbar.classList.contains("is-open") &&
+            !navbar.contains(event.target)
+          ) {
+            navbar.classList.remove("is-open");
+            if (menuToggle) {
+              menuToggle.setAttribute("aria-expanded", "false");
+            }
+          }
+        });
 
         links.forEach((link) => {
           link.addEventListener("click", (e) => {
@@ -2413,6 +2868,13 @@
             if (!target) return;
 
             e.preventDefault();
+
+            if (navbar) {
+              navbar.classList.remove("is-open");
+            }
+            if (menuToggle) {
+              menuToggle.setAttribute("aria-expanded", "false");
+            }
 
             // Animação visual do clique
             link.classList.add("click-animate");
