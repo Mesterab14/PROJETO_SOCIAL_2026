@@ -1,0 +1,343 @@
+/* RESET & VARIÁVEIS DE COR */
+/* RESET & VARIÁVEIS DE COR */
+:root {
+  --cyan-detail: #91D2F4;
+  --secondary-purple: #CBA2EA;
+  --main-purple: #3F3381;
+  --dark-purple: #1D1F5A;
+  --bg-dark: #0d0e29;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BASE DO SITE */
+body {
+  background-color: var(--bg-dark);
+  color: #ffffff;
+  font-family: 'VT323', monospace;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* 🌟 IMAGEM DE FUNDO RETRO COM BAIXA OPACIDADE */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Imagem synthwave/pixel art de fundo */
+  background-image: url('https://i.pinimg.com/originals/a7/53/a1/a753a1d7a63ceebebd970643b59f2cde.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.15; /* Opacidade baixa perfeita */
+  z-index: -1;   /* Fica no fundo de tudo */
+  filter: blur(2px); /* Desfoque bem suave */
+}
+/* 1. HEADER HERO */
+.hero-header {
+  text-align: center;
+  padding: 50px 20px 20px;
+}
+
+.sub-title {
+  color: var(--cyan-detail);
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.glitch-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 3.5rem;
+  color: #fff;
+  text-shadow: 
+    3px 3px 0px var(--main-purple),
+    -3px -3px 0px var(--secondary-purple),
+    0 0 15px var(--cyan-detail);
+  margin: 15px 0;
+  animation: pulseGlow 2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  from { text-shadow: 3px 3px 0px var(--main-purple), -3px -3px 0px var(--secondary-purple), 0 0 10px var(--cyan-detail); }
+  to { text-shadow: 3px 3px 0px var(--main-purple), -3px -3px 0px var(--secondary-purple), 0 0 25px var(--cyan-detail); }
+}
+
+.pointer {
+  color: var(--cyan-detail);
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.hero-tags {
+  color: var(--cyan-detail);
+  letter-spacing: 4px;
+  font-size: 1.1rem;
+}
+
+/* 2. TV RETRO CONTAINER */
+.tv-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin: 20px 0;
+  width: 98%;
+  max-width: 1400px; /* <--- Deixa a estrutura expandir quase a tela toda */
+}
+
+/* Botoes de Navegação Laterais */
+.nav-btn {
+  background: var(--main-purple);
+  border: 2px solid var(--secondary-purple);
+  color: #fff;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.8rem;
+  padding: 22px 25px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 0px var(--dark-purple);
+  transition: all 0.1s ease;
+}
+
+.nav-btn:hover {
+  background: var(--secondary-purple);
+  color: var(--dark-purple);
+  transform: translateY(-2px);
+}
+
+.nav-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0px var(--dark-purple);
+}
+
+/* ESTRUTURA DA TV */
+.crt-tv {
+  background: #23254d;
+  border: 5px solid var(--main-purple);
+  border-radius: 30px;
+  padding: 35px; /* bordas da TV bem marcadas */
+  box-shadow: 
+    0 0 50px rgba(91, 210, 244, 0.25),
+    inset 0 0 20px rgba(0, 0, 0, 0.9);
+  width: 100%;
+  max-width: 1100px; /* <--- Aumentado bastante! */
+}
+
+.screen-wrapper {
+  background: #000;
+  border-radius: 15px;
+  padding: 10px;
+  border: 3px solid #141533;
+}
+/* TELA CRT COM SCANLINES - MUDADO PARA 2 COLUNAS */
+.crt-screen {
+  background-color: #0b0c10;
+  border-radius: 15px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  min-height: 520px;
+  display: flex;
+  flex-direction: row; /* Coloca os elementos lado a lado */
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  z-index: 1;
+}
+
+/* Coluna Esquerda: Imagem */
+.game-media {
+  flex: 2.5; /*Aumenta a imagem aqui */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.game-img {
+  width: 100%;
+  max-width: 550px; /*aqui muda o tamanho da imagem */
+  height: 350px; /* Mantém a proporção da imagem */
+  object-fit: cover;
+  border-radius: 10px;
+  border: 3px solid var(--secondary-purple);
+  box-shadow: 0 0 15px rgba(203, 162, 234, 0.4);
+}
+
+/* Coluna Direita: Informações e Botão */
+.game-details {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinha o texto à esquerda */
+  text-align: left;
+  z-index: 3;
+}
+
+.game-badge {
+  border: 1px solid var(--cyan-detail);
+  color: var(--cyan-detail);
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  z-index: 3;
+}
+
+.game-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.8rem;
+  color: #fff;
+  text-shadow: 2px 2px var(--secondary-purple);
+  margin-bottom: 15px;
+  z-index: 3;
+}
+
+.game-description {
+  font-size: 1.4rem;
+  color: #d1d5db;
+  max-width: 100%; /* Ocupa a largura total da coluna */
+  margin-bottom: 25px;
+  z-index: 3;
+}
+/* BOTAO JOGAR AGORA */
+.play-btn {
+  background: var(--secondary-purple);
+  color: var(--dark-purple);
+  text-decoration: none;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.1rem;
+  padding: 18px 36px;
+  border-radius: 8px;
+  border: 2px solid var(--cyan-detail);
+  box-shadow: 0 4px 0px var(--main-purple);
+  transition: all 0.2s;
+  z-index: 3;
+}
+
+.play-btn:hover {
+  background: var(--cyan-detail);
+  transform: scale(1.05);
+}
+
+/* Painel de LEDs da TV */
+.tv-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  padding: 0 10px;
+}
+
+.brand {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.6rem;
+  color: var(--main-purple);
+}
+
+.led-lights {
+  display: flex;
+  gap: 8px;
+}
+
+.led {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.led.purple { background-color: var(--main-purple); box-shadow: 0 0 5px var(--main-purple); }
+.led.magenta { background-color: var(--secondary-purple); box-shadow: 0 0 5px var(--secondary-purple); }
+.led.cyan { background-color: var(--cyan-detail); box-shadow: 0 0 5px var(--cyan-detail); }
+
+/* DOTS DA NAVEGAÇÃO */
+.dots-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: var(--main-purple);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dot.active {
+  background-color: var(--cyan-detail);
+  box-shadow: 0 0 8px var(--cyan-detail);
+  transform: scale(1.2);
+}
+
+/* 3. FOOTER */
+footer {
+  width: 100%;
+  background-color: #08081a;
+  border-top: 2px solid var(--main-purple);
+  padding: 30px 20px 10px;
+  margin-top: auto;
+}
+
+.footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-brand h3 {
+  font-family: 'Press Start 2P', cursive;
+  color: var(--cyan-detail);
+  margin-bottom: 10px;
+}
+
+.footer-brand p {
+  color: #8a8fb5;
+  font-size: 1.1rem;
+}
+
+.footer-links h4, .footer-social h4 {
+  color: var(--secondary-purple);
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.footer-links ul, .footer-social ul {
+  list-style: none;
+}
+
+.footer-links a, .footer-social a {
+  color: #8a8fb5;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.footer-links a:hover, .footer-social a:hover {
+  color: var(--cyan-detail);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: #5d6288;
+  font-size: 1rem;
+}
