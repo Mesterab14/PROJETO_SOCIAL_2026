@@ -1,88 +1,102 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QMATH - Games</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QMATH - Games</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="qmath.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a
+      class="back-btn"
+      href="sitecomp.html"
+      aria-label="Voltar para a página inicial"
+      >&lt; VOLTAR</a
+    >
 
-  <header class="hero-header">
-    <span class="sub-title">=== BEM-VINDO AO ===</span>
-    <h1 class="glitch-title">QMATH</h1>
-    <div class="pointer">▼</div>
-    <p class="hero-tags">CALCULATIONS • MATH • GAMING</p>
-  </header>
+    <header class="hero-header">
+      <span class="sub-title">=== BEM-VINDO AO ===</span>
+      <h1 class="glitch-title">QMATH</h1>
+      <div class="pointer">▼</div>
+      <p class="hero-tags">SELECIONE O CONTEÚDO QUE DESEJA JOGAR</p>
+    </header>
 
-  <main class="tv-container">
-  <button class="nav-btn prev-btn" id="prevBtn">&lt;</button>
+    <main class="tv-container">
+      <button class="nav-btn prev-btn" id="prevBtn">&lt;</button>
 
-  <div class="crt-tv">
-    <div class="screen-wrapper">
-      <div class="crt-screen" id="crtScreen">
-        
-        <!-- Lado Esquerdo: Imagem do Jogo -->
-        <div class="game-media">
-          <img id="gameImage" src="" alt="Jogo" class="game-img">
+      <div class="crt-tv">
+        <div class="screen-wrapper">
+          <div class="crt-screen" id="crtScreen">
+            <!-- Lado Esquerdo: Imagem do Jogo -->
+            <div class="game-media">
+              <img id="gameImage" src="" alt="Jogo" class="game-img" />
+            </div>
+
+            <!-- Lado Direito: Categoria, Título, Descrição e Botão -->
+            <div class="game-details">
+              <div class="game-badge" id="gameCategory">
+                A CATEGORIA DO JOGO
+              </div>
+              <h2 class="game-title" id="gameTitle">NOME DO JOGO</h2>
+              <p class="game-description" id="gameDesc">SOBRE O JOGO.</p>
+              <a href="#" class="play-btn" id="gameLink" target="_blank"
+                >JOGAR AGORA</a
+              >
+            </div>
+          </div>
         </div>
 
-        <!-- Lado Direito: Categoria, Título, Descrição e Botão -->
-        <div class="game-details">
-          <div class="game-badge" id="gameCategory">A CATEGORIA DO JOGO</div>
-          <h2 class="game-title" id="gameTitle">NOME DO JOGO</h2>
-          <p class="game-description" id="gameDesc">
-            SOBRE O JOGO.
-          </p>
-          <a href="#" class="play-btn" id="gameLink" target="_blank">JOGAR AGORA</a>
+        <div class="tv-controls">
+          <div class="brand">RETRO-3000</div>
+          <div class="led-lights">
+            <span class="led purple"></span>
+            <span class="led magenta"></span>
+            <span class="led cyan"></span>
+          </div>
         </div>
-
       </div>
-    </div>
 
-    <div class="tv-controls">
-      <div class="brand">RETRO-3000</div>
-      <div class="led-lights">
-        <span class="led purple"></span>
-        <span class="led magenta"></span>
-        <span class="led cyan"></span>
+      <button class="nav-btn next-btn" id="nextBtn">&gt;</button>
+    </main>
+
+    <div class="dots-container" id="dotsContainer"></div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3>QMATH</h3>
+          <p>Exercícios de Matemática</p>
+        </div>
+        <div class="footer-links">
+          <h4>LINKS</h4>
+          <ul>
+            <li><a href="#">Jogos</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Contato</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>CONECTE-SE</h4>
+          <ul>
+            <li>
+              <a
+                href="https://www.instagram.com/terceirao._ds?igsh=OTVmN3J1ejhnNHd2"
+                >Instagram</a
+              >
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </div>
-
-  <button class="nav-btn next-btn" id="nextBtn">&gt;</button>
-</main>
-
-
-  <div class="dots-container" id="dotsContainer"></div>
-
-  <footer>
-    <div class="footer-content">
-      <div class="footer-brand">
-        <h3>QMATH</h3>
-        <p>Exercícios de Matemática</p>
+      <div class="footer-bottom">
+        <p>© 2024 • Feito com ♥</p>
       </div>
-      <div class="footer-links">
-        <h4>LINKS</h4>
-        <ul>
-          <li><a href="#">Jogos</a></li>
-          <li><a href="#">Sobre</a></li>
-          <li><a href="#">Contato</a></li>
-        </ul>
-      </div>
-      <div class="footer-social">
-        <h4>CONECTE-SE</h4>
-        <ul>
-          <li><a href="https://www.instagram.com/terceirao._ds?igsh=OTVmN3J1ejhnNHd2">Instagram</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2024  • Feito com ♥</p>
-    </div>
-  </footer>
+    </footer>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

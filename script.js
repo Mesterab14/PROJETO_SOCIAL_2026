@@ -3,23 +3,25 @@ const games = [
     category: "A CATEGORIA DO JOGO",
     title: "NOME DO JOGO",
     desc: "SOBRE O JOGO.",
-    image: "https://via.placeholder.com/400x280/3F3381/FFFFFF?text=Cyber+Adventure",
-    link: "#"
+    image:
+      "https://via.placeholder.com/400x280/3F3381/FFFFFF?text=Cyber+Adventure",
+    link: "https://percentsoul.vercel.app/",
   },
   {
     category: "A CATEGORIA DO JOGO",
     title: "NOME DO JOGO",
     desc: "SOBRE O JOGO.",
     image: "https://via.placeholder.com/400x280/1D1F5A/FFFFFF?text=Math+Matrix",
-    link: "#"
+    link: "#",
   },
   {
     category: "A CATEGORIA DO JOGO",
     title: "NOME DO JOGO",
     desc: "SOBRE O JOGO.",
-    image: "https://via.placeholder.com/400x280/0d0e29/FFFFFF?text=Retro+Runner",
-    link: "#"
-  }
+    image:
+      "https://via.placeholder.com/400x280/0d0e29/FFFFFF?text=Retro+Runner",
+    link: "#",
+  },
 ];
 
 let currentIndex = 0;
@@ -49,7 +51,7 @@ function createDots() {
 function showGame(index) {
   currentIndex = index;
   const game = games[currentIndex];
-  
+
   gameCategory.innerText = game.category;
   gameTitle.innerText = game.title;
   gameDesc.innerText = game.desc;
