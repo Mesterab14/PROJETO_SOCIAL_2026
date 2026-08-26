@@ -1268,76 +1268,144 @@
       .footer-bottom .heart {
         color: #e685ca;
       }
-      /* CARROSSEL DE COLABORADORES */
-      .carrossel-colaboradores {
-        overflow: cover;
-      }
+ /*----------------------------
+       COLABORADORES 
+ ---------------------------*/
+.colaboradores-titulo{
+    text-align: center;
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+ /* Container do carrossel */
+.carrossel-colaboradores {
+    overflow: hidden;
+  
+    width: 100%;
+    
+}
+.carrossel-colaboradores::-webkit-scrollbar {
+    display: none;
+}
 
-      .track {
-        display: flex;
-        width: max-content;
-        gap: 25px;
+.track {
+    display: flex;
+  width: max-content;
+    animation: deslizar 30s linear infinite;
+}
 
-        animation: deslizar 17s linear infinite;
+.track-sequence {
+  display: flex;
+  gap: 1em;
+  padding-right: 1em;
+    align-items: flex-start;
+}
 
-        display: flex;
-        align-items: center;
-      }
+.card {
+    width: 110px;
+    text-align: center;
+    flex-shrink: 0;
+}
 
-      /* Exibição dos Nomes */
-      .card {
-        width: 220px;
-        text-align: center;
-        transition: 0.5s;
-      }
+/* FOTO DO COLABORADOR */
+.card img {
+    width: 100px;
+    height: 100px;
 
-      .card img {
-        transform-origin: center center;
-        transition: transform 0.35s ease;
+    display: block;
+    margin: 0 auto;
 
-        width: 90px;
-        height: 90px;
+    object-fit: cover;
+    object-position: center;
 
-        border-radius: 50%;
-        object-fit: cover;
-      }
+    border-radius: 50%;
 
-      .card h3 {
-        max-width: 200px;
-        text-align: center;
-        font-size: 16px;
-        line-height: 1.5;
-        margin-top: 24px;
-        color: rgb(255, 255, 255);
+    transform-origin: center center;
+    transition: transform 0.35s ease;
+}
 
-        opacity: 0;
-        transform: translateY(-12px);
+/* NOME */
+.card h3 {
+    max-width: 200px;
+    margin: 24px auto 0;
 
-        transition: 0.5s;
-      }
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.5;
 
-      .card:hover img {
-        transform: translateY(-4px) scale(1.5);
-      }
+    color: rgb(255, 255, 255);
 
-      .card:hover h3 {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    opacity: 0;
+    transform: translateY(-12px);
+    transition: 0.5s;
+}
 
-      /* Animação do carrossel dos colaboradores */
-      @keyframes deslizar {
-        from {
-          transform: translateX(0);
-        }
+/* EFEITO AO PASSAR O MOUSE */
+.card:hover img {
+    transform: translateY(-4px) scale(1.15);
+}
 
-        to {
-          transform: translateX(-50%);
-        }
-      }
-      .track:hover {
-        animation-play-state: paused;
-      }
+.card:hover h3 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ANIMAÇÃO */
+@keyframes deslizar {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+    transform: translateX(-50%);
+    }
+}
+.track:hover {
+    animation-play-state: paused;
+}
+/*----------------------------
+  COLABORADORES PROFESSORES
+---------------------------*/
+.professores {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.professores-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 5%;
+}
+
+.professor-card {
+  width: 240px;
+  padding: 40px 40px;
+  border-radius: 20px;
+  background: var(--card-bg, #1c1538);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease;
+}
+
+.professor-card:hover {
+  transform: translateY(-8px);
+}
+
+.professor-card img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 18px;
+}
+
+.professor-card h3 {
+  margin: 0;
+  font-size: 20px;
+}
       /* JOGAR */
       /* RESET & VARIÁVEIS DE COR */
       :root {
@@ -2108,10 +2176,13 @@
         </div>
       </section>
     </main>
-    <!-- Carrossel de Colaboradores -->
+   <!-- Carrossel de Colaboradores -->
     <section class="carrossel-colaboradores" id="colaboradores">
+    <h2 class="colaboradores-titulo">Colaboradores</h2>
+    <br><br>
       <div class="track">
         <!-- Primeira sequência -->
+        <div class="track-sequence">
         <div class="card">
           <img
             src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/amanda.jpeg"
@@ -2375,267 +2446,328 @@
           />
           <h3>Roselane de Matos Oliveira</h3>
         </div>
+        </div>
+        <!-- Segunda sequência (cópia) -->
+        <div aria-hidden="true" class="track-sequence">
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/amanda.jpeg"
+    alt="Amanda"
+  />
+  <h3>Amanda dos Santos Nogueira</h3>
+</div>
 
-        <!-- Segunda sequência (copia) -->
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/amanda.jpeg"
-            alt="Amanda"
-          />
-          <h3>Amanda dos Santos Nogueira</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/anaJessica.jpeg"
-            alt="Ana Jessica"
-          />
-          <h3>Ana Jessica de Lima Cavalcante</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/anaJulha.jpeg"
-            alt="Ana Julia"
-          />
-          <h3>Ana Julia de Lima Cavalcante</h3>
-        </div>
-        <div class="card">
-          <img src="" alt="Almir" />
-          <h3>Antonio Almir Azevedo Sousa Filho</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/bruna.jpeg"
-            alt="Bruna"
-          />
-          <h3>Bruna Sofia Fernandes Vieira</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/caique.jpeg"
-            alt="Caique"
-          />
-          <h3>Caique Bacelar de Lima Calvacante</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/davila.jpeg"
-            alt="Davila"
-          />
-          <h3>Davila Maria Barbosa da Cruz</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/davyd.jpeg"
-            alt="Davyd"
-          />
-          <h3>Davyd Keven Oliveira Marinho</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/eliel.jpeg"
-            alt="Eliel"
-          />
-          <h3>Eliel Andrade Freitas Silva</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/eric.jpeg"
-            alt="Eric"
-          />
-          <h3>Eric da Silva Lima</h3>
-        </div>
-        <div class="card">
-          <img src="" alt="Ezequiel" />
-          <h3>Ezequiel de Lima Brandão</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/gabriel%20henrrique.jpeg"
-            alt="Gabriel Henrique"
-          />
-          <h3>Gabriel Henrique Fernandes Albuquerque da Silva</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/gabrielRodriguesDOvale.jpeg"
-            alt="Gabriel Rodrigues do Vale"
-          />
-          <h3>Gabriel Rodrigues do Vale</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/guilhermeSousa.jpeg"
-            alt="Guilherme Sousa"
-          />
-          <h3>Guilherme Sousa de Freitas</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/isaac.jpeg"
-            alt="Isaac"
-          />
-          <h3>Isaac Pontes de Farias</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/isacHayson.jpeg"
-            alt="Isac Hayson"
-          />
-          <h3>Isac Hayson da Silva Alves</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/jennifer.jpeg"
-            alt="Jennifer"
-          />
-          <h3>Jennifer Lopes da Silva Alves</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoGabriel.jpeg"
-            alt="João Gabriel"
-          />
-          <h3>João Gabriel Oliveira Silva</h3>
-        </div>
-        <div class="card">
-          <img src="" alt="João Lucas de Moura Fernandes" />
-          <h3>João Lucas de Moura Fernandes</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoLucasRodriguesV2.jpeg"
-            alt="João Lucas Rodrigues"
-          />
-          <h3>João Lucas Rodrigues Melo</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoMarco.jpeg"
-            alt="João Marco"
-          />
-          <h3>João Marco Duarte de Sousa</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoPedroFelix.jpeg"
-            alt="João Pedro Felix"
-          />
-          <h3>João Pedro Felix de Alcantra</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoVitor.jpeg"
-            alt="João Vitor"
-          />
-          <h3>João Vitor Rodrigues de Almeida</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joseGabriel.jpeg"
-            alt="José Gabriel"
-          />
-          <h3>José Gabriel Silva Abreu</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joseRyan.jpeg"
-            alt="José Ryan"
-          />
-          <h3>José Ryan Bernado Ribeiro</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/kadu.jpeg"
-            alt="Kadu"
-          />
-          <h3>Kadu Emanuel Correia Almeida</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/luizGuilherme.jpeg"
-            alt="Luis Guilherme"
-          />
-          <h3>Luis Guilherme Teixeira Rodrigues</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/luizFernandoCamara.jpeg"
-            alt="Luis Fernando Camara"
-          />
-          <h3>Luis Fernando Camara Lemos</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/luizFernandoMendes.jpeg"
-            alt="Luis Fernando Mendes"
-          />
-          <h3>Luis Fernando Mendes de Macedo</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/marcelo.jpeg"
-            alt="Marcelo"
-          />
-          <h3>Marcelo Gouveia Morais</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/mariaEster.jpeg"
-            alt="Maria Ester"
-          />
-          <h3>Maria Ester Alves Bezerra</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/mariaMeire.jpeg"
-            alt="Maria Meire"
-          />
-          <h3>Maria Meire Candido Avila</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/kaiqueMesquita.jpeg"
-            alt="Kaique Mesquita"
-          />
-          <h3>Pedro Kaique Mesquita Nogueira</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/pedroSantos.jpeg"
-            alt="Pedro Santos"
-          />
-          <h3>Pedro Santos Sombra</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/ranara.jpeg"
-            alt="Ranara"
-          />
-          <h3>Ranara Pereira Souza</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/raynna.jpeg"
-            alt="Raynna"
-          />
-          <h3>Raynna Ketally Soares Santos</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/renzo.jpeg"
-            alt="Renzo"
-          />
-          <h3>Renzo Pedro Sousa de Lima</h3>
-        </div>
-        <div class="card">
-          <img
-            src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/roselane.jpeg"
-            alt="Roselane"
-          />
-          <h3>Roselane de Matos Oliveira</h3>
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/anaJessica.jpeg"
+    alt="Ana Jessica"
+  />
+  <h3>Ana Jessica de Lima Cavalcante</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/anaJulha.jpeg"
+    alt="Ana Julia"
+  />
+  <h3>Ana Julia de Lima Cavalcante</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/almir.jpeg"
+    alt="Almir"
+  />
+  <h3>Antonio Almir Azevedo Sousa Filho</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/bruna.jpeg"
+    alt="Bruna"
+  />
+  <h3>Bruna Sofia Fernandes Vieira</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/caique.jpeg"
+    alt="Caique"
+  />
+  <h3>Caique Bacelar de Lima Calvacante</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/davila.jpeg"
+    alt="Davila"
+  />
+  <h3>Davila Maria Barbosa da Cruz</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/davyd.jpeg"
+    alt="Davyd"
+  />
+  <h3>Davyd Keven Oliveira Marinho</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/eliel.jpeg"
+    alt="Eliel"
+  />
+  <h3>Eliel Andrade Freitas Silva</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/eric.jpeg"
+    alt="Eric"
+  />
+  <h3>Eric da Silva Lima</h3>
+</div>
+
+<div class="card">
+  <img src="" alt="Ezequiel" />
+  <h3>Ezequiel de Lima Brandão</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/gabriel%20henrrique.jpeg"
+    alt="Gabriel Henrique"
+  />
+  <h3>Gabriel Henrique Fernandes Albuquerque da Silva</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/gabrielRodriguesDOvale.jpeg"
+    alt="Gabriel Rodrigues do Vale"
+  />
+  <h3>Gabriel Rodrigues do Vale</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/guilhermeSousa.jpeg"
+    alt="Guilherme Sousa"
+  />
+  <h3>Guilherme Sousa de Freitas</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/isaac.jpeg"
+    alt="Isaac"
+  />
+  <h3>Isaac Pontes de Farias</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/isacHayson.jpeg"
+    alt="Isac Hayson"
+  />
+  <h3>Isac Hayson da Silva Alves</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/jennifer.jpeg"
+    alt="Jennifer"
+  />
+  <h3>Jennifer Lopes da Silva Alves</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoGabriel.jpeg"
+    alt="João Gabriel"
+  />
+  <h3>João Gabriel Oliveira Silva</h3>
+</div>
+
+<div class="card">
+  <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoLucasMoura.jpeg" alt="João Lucas de Moura Fernandes" />
+  <h3>João Lucas de Moura Fernandes</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoLucasRodriguesV2.jpeg"
+    alt="João Lucas Rodrigues"
+  />
+  <h3>João Lucas Rodrigues Melo</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoMarco.jpeg"
+    alt="João Marco"
+  />
+  <h3>João Marco Duarte de Sousa</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoPedroFelix.jpeg"
+    alt="João Pedro Felix"
+  />
+  <h3>João Pedro Felix de Alcantra</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joaoVitor.jpeg"
+    alt="João Vitor"
+  />
+  <h3>João Vitor Rodrigues de Almeida</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joseGabriel.jpeg"
+    alt="José Gabriel"
+  />
+  <h3>José Gabriel Silva Abreu</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/joseRyan.jpeg"
+    alt="José Ryan"
+  />
+  <h3>José Ryan Bernado Ribeiro</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/kadu.jpeg"
+    alt="Kadu"
+  />
+  <h3>Kadu Emanuel Correia Almeida</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/luizGuilherme.jpeg"
+    alt="Luis Guilherme"
+  />
+  <h3>Luis Guilherme Teixeira Rodrigues</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/luizFernandoCamara.jpeg"
+    alt="Luis Fernando Camara"
+  />
+  <h3>Luis Fernando Camara Lemos</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/luizFernandoMendes.jpeg"
+    alt="Luis Fernando Mendes"
+  />
+  <h3>Luis Fernando Mendes de Macedo</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/marcelo.jpeg"
+    alt="Marcelo"
+  />
+  <h3>Marcelo Gouveia Morais</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/mariaEster.jpeg"
+    alt="Maria Ester"
+  />
+  <h3>Maria Ester Alves Bezerra</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/mariaMeire.jpeg"
+    alt="Maria Meire"
+  />
+  <h3>Maria Meire Candido Avila</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/kaiqueMesquita.jpeg"
+    alt="Kaique Mesquita"
+  />
+  <h3>Pedro Kaique Mesquita Nogueira</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/pedroSantos.jpeg"
+    alt="Pedro Santos"
+  />
+  <h3>Pedro Santos Sombra</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/ranara.jpeg"
+    alt="Ranara"
+  />
+  <h3>Ranara Pereira Souza</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/raynna.jpeg"
+    alt="Raynna"
+  />
+  <h3>Raynna Ketally Soares Santos</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/renzo.jpeg"
+    alt="Renzo"
+  />
+  <h3>Renzo Pedro Sousa de Lima</h3>
+</div>
+
+<div class="card">
+  <img
+    src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/alunos/roselane.jpeg"
+    alt="Roselane"
+  />
+  <h3>Roselane de Matos Oliveira</h3>
+</div>
         </div>
       </div>
     </section>
+    <!-- Professores -->
+<section>
+  <h4 class="colaboradores-titulo">Professores</h4>
+  <div class="colaboradores-professores" id="professores">
+
+  <div class="professores-container">
+
+    <div class="professor-card">
+      <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/PROFESSORES/Prof.Edilberto.jpeg" alt="Professor 1">
+      <h3>Professor Edilberto</h3>
+    </div>
+
+    <div class="professor-card">
+      <img src="https://clumlbdsqtdsxhrbxjzz.supabase.co/storage/v1/object/public/fotos-equipeProjetoSocial/PROFESSORES/Prof.Nildete.jpeg" alt="Professor 2">
+      <h3>Professora Nildete</h3>
+    </div>
+
+  </div>
+</section>
     <footer class="arcade-footer">
       <div class="footer-container">
         <div class="footer-brand">
