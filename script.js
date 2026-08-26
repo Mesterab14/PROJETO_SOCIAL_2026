@@ -1,10 +1,9 @@
 const games = [
   {
-    category: "A CATEGORIA DO JOGO",
-    title: "NOME DO JOGO",
+    category: "PORCENTAGEM",
+    title: "Percent Soul",
     desc: "SOBRE O JOGO.",
-    image:
-      "https://via.placeholder.com/400x280/3F3381/FFFFFF?text=Cyber+Adventure",
+    image:"PercentSoul.jpg",
     link: "https://percentsoul.vercel.app/",
   },
   {
