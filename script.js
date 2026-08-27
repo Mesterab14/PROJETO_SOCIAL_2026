@@ -21,6 +21,22 @@ const games = [
       "https://via.placeholder.com/400x280/0d0e29/FFFFFF?text=Retro+Runner",
     link: "#",
   },
+  {
+    category: "A CATEGORIA DO JOGO",
+    title: "NOME DO JOGO",
+    desc: "SOBRE O JOGO.",
+    image:
+      "https://via.placeholder.com/400x280/0d0e29/FFFFFF?text=Retro+Runner",
+    link: "#",
+  },
+  {
+    category: "A CATEGORIA DO JOGO",
+    title: "NOME DO JOGO",
+    desc: "SOBRE O JOGO.",
+    image:
+      "https://via.placeholder.com/400x280/0d0e29/FFFFFF?text=Retro+Runner",
+    link: "#",
+  },
 ];
 
 let currentIndex = 0;
