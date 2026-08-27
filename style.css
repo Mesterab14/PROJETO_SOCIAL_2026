@@ -236,6 +236,17 @@ body::before {
   z-index: 3;
 }
 
+.game-info {
+  border: 1px solid var(--dark-purple);
+  color: var(--secondary-purple);
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  z-index: 3;
+}
+
 .game-title {
   font-family: "Press Start 2P", cursive;
   font-size: 1.8rem;
