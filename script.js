@@ -4,7 +4,7 @@ const games = [
     title: "EXPONENTIA",
     desc: "Quatro robôs heróis são ativados para salvar a Exponentia da destruição.",
     image: "exponentia-capa.png",
-    info: "DISNPONÍVEL APENAS NO COMPUTADOR",
+    info: "DISPONÍVEL APENAS NO COMPUTADOR",
     link: "https://exponentia.vercel.app",
   },
   {
@@ -12,7 +12,7 @@ const games = [
     title: "FRACTION SPIRE",
     desc: "Fraction Spire é um jogo de aventura e estratégia onde você enfrenta inimigos em batalhas desafiadoras usando frações, cartas e habilidades especiais. Resolva desafios com frações, desvie de ataques e avance pela torre enquanto testa seus conhecimentos e suas estratégias.",
     image: "FractionSpire-capa.jpeg",
-    info: "INFORMAÇÕES DO JOGO",
+    info: "DISPONÍVEL PARA CELULAR E COMPUTADOR",
     link: "https://projeto-social-bay.vercel.app/",
   },
   {
@@ -20,7 +20,7 @@ const games = [
     title: "Percent Soul",
     desc: "Uma aula de revisão, um dia antes da prova. O protagonista dorme e vai parar em um pesadelo com inimigos da matemática e batalhas no estilo bullet hell, inspiradas em Undertale.",
     image:"PercentSoul.jpg",
-    info: "DISNPONÍVEL PARA CELULAR E COMPUTADOR",
+    info: "DISPONÍVEL PARA CELULAR E COMPUTADOR",
     link: "https://percentsoul.vercel.app/",
   },
   {
