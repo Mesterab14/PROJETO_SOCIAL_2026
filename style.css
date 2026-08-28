@@ -405,3 +405,221 @@ footer {
   color: #5d6288;
   font-size: 1rem;
 }
+
+@media (max-width: 900px) {
+  .hero-header {
+    padding-top: 70px;
+  }
+
+  .glitch-title {
+    font-size: clamp(2.2rem, 8vw, 3.5rem);
+  }
+
+  .tv-container {
+    position: relative;
+    gap: 12px;
+    width: 96%;
+  }
+
+  .nav-btn {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    width: 44px;
+    height: 56px;
+    padding: 14px 8px;
+    transform: translateY(-50%);
+  }
+
+  .nav-btn:hover {
+    transform: translateY(-50%);
+  }
+
+  .prev-btn {
+    left: -6px;
+  }
+
+  .next-btn {
+    right: -6px;
+  }
+
+  .crt-tv {
+    min-width: 0;
+    padding: 20px;
+  }
+
+  .crt-screen {
+    padding: 24px;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .game-media,
+  .game-details {
+    width: 100%;
+    flex: none;
+  }
+
+  .game-img {
+    max-width: 700px;
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+
+  .game-details {
+    align-items: center;
+    text-align: center;
+  }
+
+  .game-title {
+    font-size: 1.35rem;
+  }
+
+  .play-btn {
+    font-size: 0.85rem;
+    padding: 15px 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .back-btn {
+    top: 12px;
+    left: 12px;
+    padding: 8px 10px;
+    font-size: 0.5rem;
+  }
+
+  .hero-header {
+    width: 100%;
+    padding: 64px 16px 12px;
+  }
+
+  .sub-title {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+
+  .hero-tags {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    line-height: 1.4;
+  }
+
+  .tv-container {
+    position: relative;
+    align-items: stretch;
+    width: 100%;
+    padding: 0 8px;
+  }
+
+  .nav-btn {
+    width: 32px;
+    height: 42px;
+    padding: 12px 4px;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+
+  .prev-btn {
+    left: 0;
+  }
+
+  .next-btn {
+    right: 0;
+  }
+
+  .crt-tv {
+    min-width: 0;
+    padding: 10px;
+    border-width: 3px;
+    border-radius: 18px;
+  }
+
+  .screen-wrapper {
+    padding: 5px;
+    border-width: 2px;
+    border-radius: 10px;
+  }
+
+  .crt-screen {
+    min-height: 0;
+    padding: 16px 12px 20px;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 18px;
+    border-radius: 10px;
+  }
+
+  .game-media,
+  .game-details {
+    width: 100%;
+    flex: none;
+  }
+
+  .game-img {
+    width: 100%;
+    max-width: none;
+    aspect-ratio: 16 / 10;
+    height: auto;
+  }
+
+  .game-details {
+    align-items: center;
+    text-align: center;
+  }
+
+  .game-badge,
+  .game-info {
+    max-width: 100%;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+
+  .game-title {
+    max-width: 100%;
+    font-size: clamp(1rem, 5vw, 1.35rem);
+    line-height: 1.4;
+  }
+
+  .game-description {
+    font-size: 1.15rem;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .play-btn {
+    max-width: 100%;
+    font-size: 0.7rem;
+    line-height: 1.4;
+    padding: 12px 14px;
+  }
+
+  .tv-controls {
+    padding: 0 4px;
+  }
+
+  .brand {
+    font-size: 0.45rem;
+  }
+
+  .dots-container {
+    margin: 16px 0 28px;
+  }
+
+  footer {
+    padding: 24px 16px 10px;
+  }
+
+  .footer-content {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer-brand,
+  .footer-links,
+  .footer-social {
+    width: 100%;
+  }
+}
