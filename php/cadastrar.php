@@ -35,7 +35,7 @@ $row = mysqli_fetch_assoc($result);
 
 if($row['total'] == 1) {
     $_SESSION['email_existe'] = true;
-    header('Location: CadLog.html');
+    header('Location: index.html');
     exit;
 }
 
@@ -47,6 +47,6 @@ if($mysqli->query($sql) === TRUE) {
 
 $mysqli->close();
 // preciso colocar o cadlog como index.php, e trocar esses headers
-header('Location: ../CadLog.html');
+header('Location: ../index.html');
 exit;
 ?>

@@ -30,20 +30,20 @@ if (isset($_POST['matricula']) && isset($_POST['senha'])) {
         $_SESSION['id'] = $usuario['id'];
         $_SESSION['nome'] = $usuario['nome'];
 
-        header("Location: ../HomeP.php");
+        header("Location: ../sitecomp.html");
         exit;
 
     } else {
         echo "<script>
         alert('Senha incorreta');
-        window.location.href='../CadLog.html';
+        window.location.href='../index.html';
         </script>";
     }
 
     } else {
         echo "<script>
         alert('Matricula não encontrada');
-        window.location.href='../CadLog.html';
+        window.location.href='../index.html';
         </script>";
     }
 

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apoie o Projeto</title>
+  <style>
+    /* RESET E ESTILOS GERAIS */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #080612;
+      color: #ffffff;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 60px;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    /* --- SEÇÃO 1: APOIE OS DEVS --- */
+    .hero-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+      position: relative;
+    }
+
+    @media (max-width: 850px) {
+      .hero-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* EFEITO DE GRADIENTE DE FUNDO (GLOW) */
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      top: -10%;
+      left: -10%;
+      width: 50%;
+      height: 70%;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(12, 10, 24, 0) 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-left, .form-card {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* LADO ESQUERDO */
+    .tag-badge {
+      display: inline-block;
+      background: rgba(127, 90, 240, 0.15);
+      border: 1px solid rgba(127, 90, 240, 0.3);
+      color: #b892ff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .title-main {
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .title-gradient {
+      background: linear-gradient(90deg, #c084fc, #818cf8, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .description {
+      color: #a0a0b8;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    /* CARD DE GOAL (METAS) */
+    .goal-card {
+      background: rgba(23, 20, 38, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(127, 90, 240, 0.2);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    .goal-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .goal-title {
+      font-size: 0.75rem;
+      color: #8c8aa7;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .goal-values {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 16px;
+    }
+
+    .raised-amount {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #60a5fa;
+      text-shadow: 0 0 12px rgba(96, 165, 250, 0.5);
+    }
+
+    .target-amount {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 10px;
+      background-color: #1a172c;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #60a5fa, #c084fc);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(192, 132, 252, 0.5);
+      transition: width 0.5s ease;
+    }
+
+    .goal-footer {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: #8c8aa7;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6d28d9, #4c1d95);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(109, 40, 217, 0.4);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* LADO DIREITO - FORMULÁRIO */
+    .form-card {
+      background: linear-gradient(180deg, rgba(25, 21, 43, 0.95) 0%, rgba(15, 12, 28, 0.95) 100%);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .form-card h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .form-card p {
+      color: #8c8aa7;
+      font-size: 0.8rem;
+      margin-bottom: 24px;
+      line-height: 1.4;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #a0a0b8;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    /* VALORES DE DOAÇÃO */
+    .amount-options {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .btn-amount {
+      background: #181528;
+      border: 1px solid #2d2845;
+      color: #ffffff;
+      padding: 12px 0;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-amount:hover {
+      border-color: #6366f1;
+    }
+
+    .btn-amount.active {
+      background: linear-gradient(135deg, #6366f1, #4c1d95);
+      border-color: #a78bfa;
+      box-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
+    }
+
+    /* INPUTS DE TEXTO */
+    .input-field {
+      width: 100%;
+      background: #100d1d;
+      border: 1px solid #28243d;
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: #ffffff;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .input-field:focus {
+      border-color: #6366f1;
+    }
+
+    .input-field::placeholder {
+      color: #524f6e;
+    }
+
+    .btn-generate-pix {
+      width: 100%;
+      background: linear-gradient(90deg, #5b21b6, #7c3aed);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      transition: filter 0.2s;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-generate-pix:hover {
+      filter: brightness(1.15);
+    }
+
+    .security-note {
+      text-align: center;
+      font-size: 0.7rem;
+      color: #6b688a;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+
+    /* --- SEÇÃO 2: PARA ONDE VÃO OS RECURSOS (COM IMAGEM DE FUNDO) --- */
+    .resources-wrapper {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      position: relative;
+      border-top: 1px solid rgba(139, 92, 246, 0.3);
+      border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+      padding: 80px 20px;
+      overflow: hidden;
+    }
+
+    /* IMAGEM DE FUNDO COM SUAVIZAÇÃO/OPACIDADE */
+    .resources-wrapper::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* Coloque o nome da sua imagem aqui */
+      background-image: linear-gradient(180deg, rgba(8, 6, 18, 0.85) 0%, rgba(13, 10, 28, 0.85) 100%), 
+                        url('pixelart3.gif'); 
+      background-size: cover;
+      background-position: center;
+      opacity: 0.35; /* Ajuste a opacidade da imagem aqui (0.1 a 1.0) */
+      z-index: 0;
+    }
+
+    .resources-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1; /* Mantém o texto em cima do fundo */
+    }
+
+    .resources-title {
+      font-size: 2.2rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    }
+
+    .resources-subtitle {
+      color: #c4c3e0;
+      font-size: 0.95rem;
+      max-width: 650px;
+      margin: 0 auto 40px auto;
+      line-height: 1.6;
+      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .resources-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .resource-card {
+      background: rgba(22, 18, 42, 0.75); /* Cards semitransparentes (efeito glassmorphism) */
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-5px);
+      border-color: #a78bfa;
+      box-shadow: 0 12px 30px rgba(139, 92, 246, 0.25);
+    }
+
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      background: rgba(139, 92, 246, 0.25);
+      border: 1px solid rgba(167, 139, 250, 0.4);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: #c084fc;
+    }
+
+    .resource-card h4 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+    }
+
+    .resource-card p {
+      color: #a0a0c4;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <section class="hero-section">
+      
+      <div class="hero-left">
+        <span class="tag-badge"> SUPORTE VOLUNTÁRIO</span>
+        <h1 class="title-main">MELHORE O SITE<br><span class="title-gradient">APOIE OS DEVS</span></h1>
+        
+        <p class="description">
+          Nosso projeto é mantido por amor e dedicação voluntária. Para darmos o próximo passo importante, expandirmos a infraestrutura e mantermos o site livre de anúncios e sempre atualizado, precisamos do seu apoio! Qualquer valor doado nos ajuda a garantir o futuro e maximizar o bem-estar de toda a nossa comunidade.
+        </p>
+
+        <div class="goal-card">
+          <div class="goal-header">
+            <span class="goal-title">ARRECADADO</span>
+            <span class="goal-title">META MENSAL</span>
+          </div>
+          
+          <div class="goal-values">
+            <span class="raised-amount" id="raised-text">R$ 0,00</span>
+            <span class="target-amount" id="target-text">R$ 11.000,00</span>
+          </div>
+
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progress-fill"></div>
+          </div>
+
+          <div class="goal-footer">
+            <span id="supporters-count">👥 0 apoios este mês</span>
+            <span id="percentage-text">0.00% Concluído</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn-primary" onclick="scrollToForm()">FAZER APOIO &rarr;</button>
+          <button class="btn-secondary">SABER MAIS</button>
+        </div>
+      </div>
+
+      <div class="form-card" id="donation-form">
+        <h3>SEU APOIO VOLUNTÁRIO</h3>
+        <p>Cada real voluntário é maximizado e revertido para servidores de alta performance e melhorias técnicas no projeto.</p>
+
+        <div class="form-group">
+          <label class="form-label">SELECIONE O VALOR</label>
+          <div class="amount-options">
+            <button type="button" class="btn-amount active" data-value="10">R$ 10</button>
+            <button type="button" class="btn-amount" data-value="20">R$ 20</button>
+            <button type="button" class="btn-amount" data-value="50">R$ 50</button>
+            <button type="button" class="btn-amount" data-value="outros">Outro</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="username">SEU NOME (OPCIONAL)</label>
+          <input type="text" id="username" class="input-field" placeholder="Ex: Guilherme S. (ou deixe em branco)">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="message">SUA MENSAGEM DE APOIO (OPCIONAL)</label>
+          <input type="text" id="message" class="input-field" placeholder="Ex: Excelente projeto! Muito sucesso para todos.">
+        </div>
+
+        <button type="button" class="btn-generate-pix" id="btn-submit">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+          GERAR QR CODE PIX
+        </button>
+
+        <div class="security-note">
+           Transação simulada e 100% segura
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="resources-wrapper">
+    <section class="resources-section">
+      <h2 class="resources-title">PARA ONDE VÃO OS RECURSOS?</h2>
+      <p class="resources-subtitle">Utilizamos todos os recursos arrecadados de forma transparente, focando exclusivamente na melhoria do site e do jogo para os nossos usuários.</p>
+
+      <div class="resources-grid">
+        
+        <div class="resource-card">
+          <div class="icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <h4>APOIO AOS DEVS</h4>
+          <p>Ajude a cobrir os custos e recompensar as horas de trabalho da nossa dedicada equipe de programadores, que se esforçam diariamente para desenvolver novas funcionalidades de ponta.</p>
+        </div>
+
+        <div class="resource-card">
+          <div class="icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+              <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+              <line x1="6" y1="6" x2="6.01" y2="6"></line>
+              <line x1="6" y1="18" x2="6.01" y2="18"></line>
+            </svg>
+          </div>
+          <h4>FUTURAS MELHORIAS</h4>
+          <p>Representa os recursos que usaríamos para adicionar novas telas, jogos e conteúdos exclusivos no site no futuro.</p>
+        </div>
+
+        <div class="resource-card">
+          <div class="icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h4>EXPANSÃO DO PROJETO</h4>
+          <p>Permita que nossa equipe traga artistas, modeladores e produtores adicionais para expandir o conteúdo, adicionando novas seções ricas, áudio, vídeos e experiências interativas de alto nível.</p>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <script>
+    let raisedAmount = 0.00;
+    const targetAmount = 1000.00;
+    let totalSupporters = 0;
+    let selectedValue = 10;
+
+    function updateGoalProgress() {
+      const percentage = ((raisedAmount / targetAmount) * 100).toFixed(2);
+      
+      document.getElementById('raised-text').innerText = R$ ${raisedAmount.toLocaleString('pt-BR', { minimumFractionDigits: 2 })};
+      document.getElementById('target-text').innerText = R$ ${targetAmount.toLocaleString('pt-BR', { minimumFractionDigits: 2 })};
+      document.getElementById('percentage-text').innerText = ${percentage}% Concluído;
+      document.getElementById('supporters-count').innerText = 👥 ${totalSupporters} apoios este mês;
+      document.getElementById('progress-fill').style.width = ${Math.min(percentage, 100)}%;
+    }
+
+    const amountButtons = document.querySelectorAll('.btn-amount');
+    amountButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        amountButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const val = btn.getAttribute('data-value');
+        if (val === 'outros') {
+          const customValue = prompt('Digite o valor desejado em R$:', '100');
+          selectedValue = parseFloat(customValue) || 0;
+        } else {
+          selectedValue = parseFloat(val);
+        }
+      });
+    });
+
+    document.getElementById('btn-submit').addEventListener('click', () => {
+      if (selectedValue <= 0) {
+        alert('Por favor, escolha um valor válido para apoiar.');
+        return;
+      }
+
+      const name = document.getElementById('username').value.trim() || 'Anônimo';
+      
+      raisedAmount += selectedValue;
+      totalSupporters += 1;
+      updateGoalProgress();
+
+      alert(Obrigado pelo seu apoio, ${name}!\n\nUm QR Code Pix simulado para o valor de R$ ${selectedValue.toFixed(2)} foi gerado com sucesso.);
+    });
+
+    function scrollToForm() {
+      document.getElementById('donation-form').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    updateGoalProgress();
+  </script>
+</body>
+</html>

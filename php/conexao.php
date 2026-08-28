@@ -1,9 +1,9 @@
 <?php
 
-$usuario = 'root';
-$senha = '18165644';
-$database = 'projetosocial';
-$host = 'localhost';
+$usuario = 'if0_42695718';
+$senha = 'projetosocial21';
+$database = 'if0_42695718_XXX';
+$host = 'sql103.infinityfree.com';
 
 $mysqli = new mysqli($host, $usuario, $senha, $database);
 
