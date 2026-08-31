@@ -36,8 +36,8 @@ const games = [
     title: "Reino das Proporções",
     desc: "O equilíbrio de um mundo foi ameaçado pelo Rei das Trevas, e você assume o papel do herói encarregado de deter esse vilão. Ao longo da jornada, é preciso enfrentar inimigos e resolver desafios de razão e proporção para se aproximar do confronto final no castelo, derrotar o vilão e restaurar a harmonia matemática do reino.",
     image:"reino.jpg",
-    info: "DISPONÍVEL APENAS NO COMPUTADOR",
-    link: "https://reinodasproporcoes.vercel.app/",
+    info: "DISPONÍVEL PARA CELULAR E COMPUTADOR",
+    link: "https://reinodasproporcoesalpha.vercel.app/",
   },
 ];
 
